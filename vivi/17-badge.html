@@ -1,0 +1,49 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Badge e progressi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.hl{position:relative;background:var(--viola);border-radius:24px;padding:24px;color:#fff;overflow:hidden}
+.hl>svg{position:absolute;right:-40px;top:-40px}
+.hl .tk{height:8px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden;margin:14px 0 8px}.hl .tk i{display:block;height:100%;width:0;background:var(--lime);border-radius:4px;transition:width 1.2s ease}
+.bgs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bgi{text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.bgi .c{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:var(--ink);margin-bottom:4px;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s;transition-delay:var(--rd)}
+.bgi.rv{transform:scale(.8)}.bgi.rv.in{transform:none}
+.bgi b{font:600 12px 'DM Sans'}.bgi small{font-size:10px;color:var(--fg2)}
+.ob{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--card-bg);box-shadow:0 2px 12px var(--card-shadow)}
+.ob .ci{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--viola);opacity:.5;flex-shrink:0}
+.lb{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px}
+.lb .n{width:18px;font:700 16px 'DM Sans'}
+</style></head><body>
+<div class="phone"><div class="screen">
+<div class="topbar"><button class="iconbtn" data-go="16-profilo.html" aria-label="Indietro"><i data-i="back" data-s="24"></i></button><h1>Badge e Progressi</h1><i data-i="trophy" data-s="20" style="color:var(--viola)"></i></div>
+<div class="pad col gap16">
+ <div class="hl rv"><svg width="200" height="200"><circle cx="100" cy="100" r="70" fill="#A98BFF" opacity=".2"/></svg>
+  <div class="row between" style="align-items:flex-start"><div><div class="sora" style="font:800 32px 'Sora'">Livello 12</div><div style="font-size:16px;opacity:.8">Esploratore Urbano</div></div><span data-m="party" data-s="72"></span></div>
+  <div class="tk"><i data-w="65%"></i></div><div style="font-size:13px">1.280 / 2.000 XP per il Livello 13</div><div class="row gap6" style="font-size:14px;color:var(--lime);margin-top:6px"><i data-i="bolt" data-s="16"></i>Mancano 720 XP</div></div>
+ <div class="row between rv" style="margin-top:6px"><span class="sec big">Badge sbloccati</span><span class="sm muted">8 su 15</span></div>
+ <div class="bgs">
+  <div class="bgi rv"><span class="c" style="background:var(--lime)"><i data-i="star" data-s="28"></i></span><b>Explorer</b><small>5 eventi · 3 Nov</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--rosa)"><i data-i="music" data-s="28"></i></span><b>Music Fan</b><small>3 concerti · 28 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--lav)"><i data-i="brush" data-s="28"></i></span><b>Art Lover</b><small>2 mostre · 25 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--viola);color:#fff"><i data-i="flame" data-s="28"></i></span><b>Streak 7</b><small>7 giorni · 20 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--lime)"><i data-i="users" data-s="28"></i></span><b>Social Butterfly</b><small>10 persone · 15 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--rosa)"><i data-i="camera" data-s="28"></i></span><b>Creator</b><small>3 video · 10 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--lav)"><i data-i="map" data-s="28"></i></span><b>Cartografo</b><small>10 luoghi · 5 Ott</small></div>
+  <div class="bgi rv"><span class="c" style="background:var(--prugna);color:#fff"><i data-i="moon" data-s="28"></i></span><b>Nottambulo</b><small>5 serate · 1 Ott</small></div></div>
+ <div class="sec big rv" style="margin-top:8px"><i data-i="target" data-s="20" style="color:var(--viola)"></i>Prossimi obiettivi</div>
+ <div class="col" style="gap:12px">
+  <div class="ob rv"><span class="ci"><i data-i="trophy" data-s="22"></i></span><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Leggenda Urbana</b><span class="sm muted">Partecipa a 50 eventi</span><div class="bar"><i data-w="48%"></i></div></div></div>
+  <div class="ob rv"><span class="ci"><i data-i="party" data-s="22"></i></span><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Festaiolo</b><span class="sm muted">Vai a 10 festival</span><div class="bar"><i data-w="30%"></i></div></div></div>
+  <div class="ob rv"><span class="ci"><i data-i="camera" data-s="22"></i></span><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Reporter</b><span class="sm muted">Carica 20 video</span><div class="bar"><i data-w="25%"></i></div></div></div>
+  <div class="ob rv"><span class="ci"><i data-i="diamond" data-s="22"></i></span><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">VIP</b><span class="sm muted">Raggiungi livello 20</span><div class="bar"><i data-w="60%"></i></div></div></div></div>
+ <div class="sec rv" style="margin-top:8px"><i data-i="users" data-s="18" style="color:var(--viola)"></i>Tra i tuoi amici</div>
+ <div class="col gap4">
+  <div class="lb rv" style="background:rgba(217,239,112,.18)"><span class="n">1</span><span class="ava m c-rosa">S</span><b class="grow" style="font:600 14px 'DM Sans'">Sofia</b><span class="sm">2.100 XP</span><span class="pill s lime">Lv.14</span></div>
+  <div class="lb rv" style="background:var(--soft);box-shadow:inset 0 0 0 1.5px var(--viola)"><span class="n">2</span><span class="ava m c-viola">A</span><b class="grow" style="font:600 14px 'DM Sans'">Adrian (tu)</b><span class="sm">1.280 XP</span><span class="pill s viola">Lv.12</span></div>
+  <div class="lb rv"><span class="n">3</span><span class="ava m c-lime">M</span><b class="grow" style="font:600 14px 'DM Sans'">Marco</b><span class="sm">980 XP</span><span class="pill s lav">Lv.10</span></div>
+  <div class="lb rv"><span class="n">4</span><span class="ava m c-lav">E</span><b class="grow" style="font:600 14px 'DM Sans'">Elena</b><span class="sm">750 XP</span><span class="pill s lav">Lv.8</span></div>
+  <div class="lb rv"><span class="n">5</span><span class="ava m c-lilla">L</span><b class="grow" style="font:600 14px 'DM Sans'">Luca</b><span class="sm">620 XP</span><span class="pill s lav">Lv.7</span></div></div>
+ <div class="row gap8 rv" style="align-items:flex-end;margin-top:6px"><span data-m="wave" data-s="64"></span><span class="bubble" style="margin-bottom:24px;--d:.2s">Continua così, manca poco al prossimo badge!</span></div>
+</div></div></div>
+<script>tabbar('profilo');</script></body></html>

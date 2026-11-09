@@ -1,0 +1,45 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Coordinamento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.pr{display:flex;align-items:center;gap:12px;padding:8px 0}
+.st{display:inline-flex;align-items:center;gap:5px;font:600 12px 'DM Sans'}
+.vt{padding:14px;border-radius:16px;background:var(--card-bg);box-shadow:0 2px 12px var(--card-shadow);display:flex;gap:12px;align-items:center}
+.vb{width:36px;height:36px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--viola);color:var(--viola);display:grid;place-items:center;transition:all .25s;flex-shrink:0}
+.vb.on{background:var(--viola);color:#fff;animation:vp .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes vp{0%{transform:scale(.8)}100%{transform:scale(1)}}
+.vt .bar>i.full{background:var(--lime)}
+.nt{display:flex;gap:10px}.nt p{font-size:14px;margin-top:2px}
+.nb{display:flex;align-items:center;gap:8px;background:var(--card-bg);border-radius:14px;padding:6px 6px 6px 14px;margin-top:12px}
+.nb input{flex:1;border:0;outline:0;background:none;font:400 14px 'DM Sans';color:var(--fg);min-width:0}
+.nb button{width:36px;height:36px;border-radius:50%;background:var(--viola);color:#fff;display:grid;place-items:center;transition:transform .15s}.nb button:active{transform:scale(.9)}
+</style></head><body>
+<div class="phone"><div class="screen" style="padding-bottom:180px">
+<div class="topbar"><button class="iconbtn" data-go="11-timeline.html" aria-label="Indietro"><i data-i="back" data-s="24"></i></button><h1 style="font-size:18px;white-space:nowrap">Weekend culturale</h1><span class="pill s lav" style="font-weight:600"><i data-i="clipboard" data-s="12"></i>Coordinamento</span></div>
+<div class="pad col gap16">
+ <div class="card rv" style="padding:16px 18px"><div class="sec" style="margin-bottom:6px">Chi viene?</div>
+  <div class="pr"><span class="ava c-viola">A</span><b class="grow" style="font:600 14px 'DM Sans'">Adrian</b><span class="st" style="color:#8aa31a"><i data-i="checkc" data-s="16"></i>Confermato</span></div>
+  <div class="pr"><span class="ava c-rosa">S</span><b class="grow" style="font:600 14px 'DM Sans'">Sofia</b><span class="st" style="color:#8aa31a"><i data-i="checkc" data-s="16"></i>Confermata</span></div>
+  <div class="pr"><span class="ava c-lime">M</span><b class="grow" style="font:600 14px 'DM Sans'">Marco</b><span class="st" style="color:var(--warn)"><i data-i="clock" data-s="16"></i>In attesa</span></div>
+  <div class="pr"><span class="ava c-lav">E</span><b class="grow" style="font:600 14px 'DM Sans'">Elena</b><span class="st" style="color:#8aa31a"><i data-i="checkc" data-s="16"></i>Confermata</span></div>
+  <div class="pr"><span class="ava c-lilla">L</span><b class="grow" style="font:600 14px 'DM Sans'">Luca</b><span class="st" style="color:#E0558F"><i data-i="xc" data-s="16"></i>Non può</span></div>
+  <div class="row between" style="margin-top:10px"><span class="sm" style="font-weight:600">4/5 confermati</span><span class="xs muted">80%</span></div><div class="bar" style="margin-top:6px"><i data-w="80%"></i></div></div>
+ <div class="rv"><div class="sec">Vota le tappe</div><div class="sm muted" style="margin-top:2px">Scegli quelle che preferisci</div></div>
+ <div class="col" style="gap:12px" id="vts">
+  <div class="vt rv"><div class="grow col gap6"><b class="sora" style="font:600 15px 'Sora'">Mostra Van Gogh</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>GAM Torino</span><span class="meta"><i data-i="clock" data-s="12"></i>15:00</span></div><div class="row gap8"><div class="bar grow"><i class="full" data-w="100%"></i></div><span class="xs muted">4/4</span></div></div><button class="vb on" data-n="4" aria-label="Vota"><i data-i="thumb" data-s="18"></i></button></div>
+  <div class="vt rv"><div class="grow col gap6"><b class="sora" style="font:600 15px 'Sora'">Aperitivo Murazzi</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Bar Aurora</span><span class="meta"><i data-i="clock" data-s="12"></i>17:00</span></div><div class="row gap8"><div class="bar grow"><i class="" data-w="75%"></i></div><span class="xs muted">3/4</span></div></div><button class="vb " data-n="3" aria-label="Vota"><i data-i="thumb" data-s="18"></i></button></div>
+  <div class="vt rv"><div class="grow col gap6"><b class="sora" style="font:600 15px 'Sora'">Cena Giapponese</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Ramen Bar</span><span class="meta"><i data-i="clock" data-s="12"></i>19:00</span></div><div class="row gap8"><div class="bar grow"><i class="" data-w="50%"></i></div><span class="xs muted">2/4</span></div></div><button class="vb " data-n="2" aria-label="Vota"><i data-i="thumb" data-s="18"></i></button></div>
+  <div class="vt rv"><div class="grow col gap6"><b class="sora" style="font:600 15px 'Sora'">Live Jazz</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Jazz Club TO</span><span class="meta"><i data-i="clock" data-s="12"></i>21:30</span></div><div class="row gap8"><div class="bar grow"><i class="full" data-w="100%"></i></div><span class="xs muted">4/4</span></div></div><button class="vb on" data-n="4" aria-label="Vota"><i data-i="thumb" data-s="18"></i></button></div>
+ </div>
+ <div class="rv" style="background:var(--sunk);border-radius:16px;padding:16px"><div class="sec" style="font-size:14px;margin-bottom:12px"><i data-i="comment" data-s="16"></i>Note del gruppo</div>
+  <div class="col gap12"><div class="nt"><span class="ava s c-rosa">S</span><div><b style="font-size:14px">Sofia</b> <span class="xs muted">14:23</span><p>Io arrivo alle 15:30, vi raggiungo alla GAM!</p></div></div><div class="nt"><span class="ava s c-lime">M</span><div><b style="font-size:14px">Marco</b> <span class="xs muted">14:45</span><p>Possiamo anticipare l'aperitivo?</p></div></div></div>
+  <div class="nb"><input placeholder="Scrivi una nota..."><button aria-label="Invia"><i data-i="send" data-s="16"></i></button></div></div>
+</div>
+<div class="dock solid"><button class="btn block tall off" id="cf"><i data-i="check" data-s="18"></i>Conferma piano definitivo</button></div>
+</div></div>
+<script>
+tabbar('piani');
+document.getElementById('vts').addEventListener('click',e=>{const b=e.target.closest('.vb');if(!b)return;const was=b.classList.contains('on');b.classList.toggle('on');
+ const votes=+b.dataset.n+(was?-1:1),box=b.parentElement;b.dataset.n=votes;
+ const bar=box.querySelector('.bar>i');bar.style.width=votes/4*100+'%';bar.classList.toggle('full',votes===4);box.querySelector('.bar+.xs').textContent=votes+'/4';});
+</script></body></html>

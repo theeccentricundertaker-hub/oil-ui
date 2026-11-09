@@ -1,0 +1,80 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Crea piano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.wiz{overflow:hidden}
+.head{position:absolute;top:0;left:0;right:0;padding:50px 20px 10px;background:var(--bg);z-index:10}
+.head .tt{display:flex;align-items:center;justify-content:space-between}.head h1{font:700 20px 'Sora'}
+.prog{display:flex;gap:4px;margin-top:12px}.prog i{flex:1;height:4px;border-radius:4px;background:var(--g300);transition:background .4s,flex .4s}.prog i.done{background:var(--lime)}.prog i.on{background:var(--viola)}
+.stp{position:absolute;inset:0;padding:158px 20px 100px;overflow-y:auto;scrollbar-width:none;transform:translateX(100%);transition:transform .35s var(--ease)}
+.stp.on{transform:none}.stp.out{transform:translateX(-100%)}
+.stp::-webkit-scrollbar{display:none}
+.stp h2{font:700 22px 'Sora'}
+.bot{position:absolute;left:0;right:0;bottom:0;padding:12px 20px 30px;background:var(--bg);z-index:10}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;margin-top:8px}
+.cal .wd{font:500 12px 'DM Sans';color:var(--fg2);padding:6px 0}
+.cal button{width:36px;height:36px;margin:0 auto;border-radius:50%;font:400 14px 'DM Sans';transition:background .2s,color .2s}
+.cal button.past{opacity:.3;pointer-events:none}.cal button.today{box-shadow:inset 0 0 0 2px var(--lime)}
+.cal button.sel{background:var(--viola);color:#fff;animation:sc .3s ease}
+@keyframes sc{50%{transform:scale(1.15)}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.gi{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:14px;background:var(--card-bg);box-shadow:inset 0 0 0 1.5px var(--g300);font:500 13px 'DM Sans';cursor:pointer;transition:all .2s}
+.gi.on{background:var(--viola);color:#fff;box-shadow:inset 0 0 0 1.5px var(--viola);animation:tg .25s ease}
+@keyframes tg{0%{transform:scale(.95)}100%{transform:scale(1)}}
+.ct{display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer}
+.ck{width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 1.5px var(--g300);display:grid;place-items:center;color:#fff;transition:background .2s}
+.ck svg{transform:scale(0);transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.ct.on .ck{background:var(--viola);box-shadow:none}.ct.on .ck svg{transform:scale(1)}
+.sum{padding:20px;display:flex;flex-direction:column;gap:14px;margin-top:16px}
+</style></head><body>
+<div class="phone"><div class="screen nopad wiz" style="animation:none">
+<div class="head"><div class="tt"><button class="iconbtn" id="bk" aria-label="Indietro"><i data-i="back" data-s="24"></i></button><h1>Nuovo Piano</h1><button class="iconbtn" data-go="04-home.html" aria-label="Chiudi"><i data-i="x" data-s="22"></i></button></div>
+ <div class="prog" id="pg"><i class="on"></i><i></i><i></i><i></i></div><div class="xs muted" id="ps" style="margin-top:8px">Passo 1 di 4</div></div>
+
+<section class="stp on"><div class="row gap8" style="align-items:flex-end"><span data-m="search" data-s="56"></span><span class="bubble" style="margin-bottom:20px">Quando usciamo?</span></div>
+ <h2 style="margin-top:6px">Scegli quando</h2>
+ <div class="row between" style="margin-top:14px"><button class="iconbtn" aria-label="Mese precedente"><i data-i="back" data-s="20"></i></button><b class="sora" style="font-size:16px;font-weight:600">Novembre 2026</b><button class="iconbtn" aria-label="Mese successivo"><i data-i="right" data-s="20"></i></button></div>
+ <div class="cal" id="cal"></div>
+ <div class="wrap" data-multi style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"><span class="chip pill"><i data-i="sun" data-s="14"></i>Mattina</span><span class="chip pill on"><i data-i="sunset" data-s="14"></i>Pomeriggio</span><span class="chip pill on"><i data-i="moon" data-s="14"></i>Sera</span><span class="chip pill"><i data-i="stars" data-s="14"></i>Notte</span></div></section>
+
+<section class="stp"><h2>Che tipo di attività?</h2>
+ <div class="grid3" data-multi>
+  <span class="gi on" data-opt><i data-i="music" data-s="24"></i>Musica</span><span class="gi" data-opt><i data-i="brush" data-s="24"></i>Arte</span><span class="gi" data-opt><i data-i="run" data-s="24"></i>Sport</span>
+  <span class="gi on" data-opt><i data-i="fork" data-s="24"></i>Food</span><span class="gi" data-opt><i data-i="masks" data-s="24"></i>Teatro</span><span class="gi" data-opt><i data-i="camera" data-s="24"></i>Foto</span>
+  <span class="gi" data-opt><i data-i="wine" data-s="24"></i>Aperitivo</span><span class="gi" data-opt><i data-i="bag" data-s="24"></i>Shopping</span><span class="gi" data-opt><i data-i="leaf" data-s="24"></i>Natura</span></div></section>
+
+<section class="stp"><h2>Chi vuoi portare?</h2>
+ <label class="input" style="margin-top:14px"><i data-i="search" data-s="18"></i><input placeholder="Cerca amici..."></label>
+ <div id="cts" style="margin-top:8px">
+  <div class="ct on"><span class="ava xl c-rosa">S</span><div class="grow"><b style="font-weight:600">Sofia</b><div class="sm muted">@sofia_to</div></div><span class="ck"><i data-i="check" data-s="14"></i></span></div>
+  <div class="ct"><span class="ava xl c-lime">M</span><div class="grow"><b style="font-weight:600">Marco</b><div class="sm muted">@marco_torino</div></div><span class="ck"><i data-i="check" data-s="14"></i></span></div>
+  <div class="ct on"><span class="ava xl c-lav">E</span><div class="grow"><b style="font-weight:600">Elena</b><div class="sm muted">@elena.art</div></div><span class="ck"><i data-i="check" data-s="14"></i></span></div>
+  <div class="ct"><span class="ava xl c-lilla">L</span><div class="grow"><b style="font-weight:600">Luca</b><div class="sm muted">@luca_jazz</div></div><span class="ck"><i data-i="check" data-s="14"></i></span></div></div>
+ <button class="btn sec block" style="margin-top:12px"><i data-i="link" data-s="18"></i>Invita tramite link</button>
+ <div class="center row" style="justify-content:center;margin-top:14px"><span class="pill lav" id="cn">2 persone selezionate</span></div></section>
+
+<section class="stp"><h2>Il tuo piano</h2>
+ <div class="card sum"><div class="row gap8" style="font-weight:600"><i data-i="calendar" data-s="18" style="color:var(--viola)"></i><span id="sd">Sabato 15 Novembre</span></div><div class="row gap8" style="font-weight:600"><i data-i="clock" data-s="18" style="color:var(--viola)"></i><span id="sf">Pomeriggio + Sera</span></div>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px"><span class="pill lav"><i data-i="music" data-s="14"></i>Musica</span><span class="pill lime"><i data-i="fork" data-s="14"></i>Food</span></div>
+  <div class="row gap12"><div class="stack"><span class="ava s c-viola">A</span><span class="ava s c-rosa">S</span><span class="ava s c-lav">E</span></div><span class="sm">Adrian, Sofia, Elena</span></div>
+  <div class="row gap8 violet" style="font:700 16px 'Sora'"><i data-i="star" data-s="18"></i>Stima: +120 XP</div></div>
+ <div class="row gap8" style="margin-top:14px;align-items:flex-end"><span data-m="party" data-s="64"></span><span class="bubble" style="margin-bottom:22px">Questa promette bene!</span></div></section>
+
+<div class="bot"><button class="btn block tall" id="nx">Avanti <i data-i="arrow" data-s="18"></i></button><a class="row gap4 violet hide center" id="ed" style="justify-content:center;margin-top:12px;font-weight:500;cursor:pointer"><i data-i="pencil" data-s="14"></i>Modifica</a></div>
+</div></div>
+<script>
+const days=['L','M','M','G','V','S','D'],cal=document.getElementById('cal');days.forEach(d=>cal.insertAdjacentHTML('beforeend',`<span class="wd">${d}</span>`));
+/* Novembre 2026 inizia di domenica: 6 celle vuote */ for(let i=0;i<6;i++)cal.insertAdjacentHTML('beforeend','<span></span>');
+for(let d=1;d<=30;d++){const b=document.createElement('button');b.textContent=d;if(d<9)b.className='past';else if(d===9)b.className='today';if(d===15)b.classList.add('sel');b.onclick=()=>{cal.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');b.style.animation='none';void b.offsetWidth;b.style.animation='';const N=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];sd.textContent=N[(d+6)%7].replace(/^./,c=>c.toUpperCase())+' '+d+' Novembre'};cal.appendChild(b);}
+let n=0;const S=[...document.querySelectorAll('.stp')],P=[...document.querySelectorAll('#pg i')],nx=document.getElementById('nx');
+function go(i){if(i<0)return location.href='04-home.html';
+ S[n].classList.remove('on');S[n].classList.add('out');if(i<n){S[i].style.transition='none';S[i].style.transform='translateX(-100%)';S[i].offsetWidth;S[i].style.transition='';S[i].style.transform='';}
+ S[i].classList.remove('out');S[i].classList.add('on');
+ setTimeout(()=>S.forEach((s,k)=>{if(k>i){s.classList.remove('out');s.classList.remove('on')}}),360);
+ n=i;P.forEach((p,k)=>{p.className=k<i?'done':k===i?'on':''});ps.textContent='Passo '+(i+1)+' di 4';
+ nx.className='btn block tall'+(i===3?' big':'');nx.innerHTML=i===3?'Crea Piano '+icon('rocket',20):'Avanti '+icon('arrow',18);
+ if(i===3){nx.style.height='56px';nx.style.boxShadow='0 8px 28px rgba(104,69,245,.45)';}else{nx.style.height='';nx.style.boxShadow='';}
+ ed.classList.toggle('hide',i!==3);}
+nx.onclick=()=>n===3?location.href='18-stati.html#conferma':go(n+1);bk.onclick=()=>go(n-1);ed.onclick=()=>go(0);
+document.getElementById('cts').addEventListener('click',e=>{const c=e.target.closest('.ct');if(!c)return;c.classList.toggle('on');const k=document.querySelectorAll('.ct.on').length;cn.textContent=k+(k===1?' persona selezionata':' persone selezionate')});
+</script></body></html>

@@ -1,0 +1,37 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Programma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.tl{position:relative;padding:0 20px;margin-top:18px}
+.tl .line{position:absolute;left:72px;top:8px;bottom:8px;width:2px}
+.tl .line svg{width:2px;height:100%;overflow:visible}
+.stop{position:relative;display:flex;align-items:flex-start;gap:0;margin-bottom:18px}
+.stop .tm{width:46px;font:600 14px 'Sora';color:var(--soft-fg);padding-top:14px;flex-shrink:0;text-align:left}
+.stop .nd{position:absolute;left:52px;top:16px;transform:translateX(-50%);border-radius:50%;display:grid;place-items:center;z-index:2}
+.stop .cd{margin-left:34px;flex:1;padding:14px;border-radius:16px;background:var(--card-bg);box-shadow:0 2px 12px var(--card-shadow);display:flex;flex-direction:column;gap:6px;min-width:0}
+.stop h3{font:600 15px 'Sora'}
+.nd.done{width:14px;height:14px;background:var(--lime);border:3px solid var(--bg);box-sizing:content-box;color:#fff;margin-left:0}
+.nd.cur{width:18px;height:18px;background:var(--viola);animation:cp 1.6s ease-out infinite}
+@keyframes cp{0%{box-shadow:0 0 0 0 rgba(104,69,245,.45)}100%{box-shadow:0 0 0 10px rgba(104,69,245,0)}}
+.nd.fut{width:12px;height:12px;background:var(--bg);box-shadow:inset 0 0 0 2px var(--g300)}
+.stop.cur .cd{box-shadow:inset 0 0 0 2px var(--viola),0 2px 12px var(--card-shadow)}
+.stop.fut .cd{opacity:.7}.stop.fut .tm{color:var(--fg2)}
+.walk{display:flex;align-items:center;gap:6px;margin:-8px 0 10px 86px;font-size:12px;color:var(--fg2)}
+.stop.rv{transform:translateX(-14px) translateY(0)}.stop.rv.in{transform:none}
+</style></head><body>
+<div class="phone"><div class="screen" style="padding-bottom:180px">
+<div class="topbar"><button class="iconbtn" data-go="15-piani.html" aria-label="Indietro"><i data-i="back" data-s="24"></i></button><h1>Weekend culturale</h1><button class="iconbtn" aria-label="Condividi"><i data-i="share" data-s="22"></i></button><button class="iconbtn" aria-label="Modifica"><i data-i="pencil" data-s="22"></i></button></div>
+<div class="pad rv"><div class="card" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+ <div class="row gap8" style="font:600 14px 'DM Sans'"><i data-i="calendar" data-s="18" style="color:var(--viola)"></i>Sabato 15 Novembre</div>
+ <div class="row gap8"><i data-i="users" data-s="18" style="color:var(--viola)"></i><div class="stack"><span class="ava s c-viola">A</span><span class="ava s c-rosa">S</span><span class="ava s c-lime">M</span><span class="ava s c-lav">E</span></div><span class="sm">5 partecipanti</span></div>
+ <span class="pill lime" style="font:600 12px 'Sora';align-self:flex-start"><i data-i="trophy" data-s="14"></i>+120 XP se completi tutto</span></div></div>
+<div class="tl"><div class="line"><svg viewBox="0 0 2 100" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="100" stroke="#DCD2FF" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="1.4s" fill="freeze" begin="0.2s"/></line></svg></div>
+ <div class="stop rv"><span class="tm">15:00</span><span class="nd done"><i data-i="check" data-s="8"></i></span><div class="cd"><h3>Mostra Van Gogh</h3><span class="meta"><i data-i="pin" data-s="12"></i>GAM Torino, 1.2km</span><span class="meta"><i data-i="clock" data-s="12"></i>1h 30min</span><div class="row gap8"><span class="pill s lav"><i data-i="brush" data-s="10"></i>Arte</span><span class="pill s lime">+30 XP</span></div></div></div>
+ <div class="walk rv"><i data-i="route" data-s="14"></i>300m a piedi</div>
+ <div class="stop cur rv"><span class="tm">17:00</span><span class="nd cur"></span><div class="cd" style="background:var(--soft)"><h3>Aperitivo sui Murazzi</h3><span class="meta"><i data-i="pin" data-s="12"></i>Bar Aurora, 300m dalla tappa precedente</span><span class="meta"><i data-i="clock" data-s="12"></i>1h</span><div class="row gap8"><span class="pill s rosa">Aperitivo</span><span class="pill s lime">+20 XP</span></div></div></div>
+ <div class="stop fut rv"><span class="tm">19:00</span><span class="nd fut"></span><div class="cd"><h3>Cena Giapponese</h3><span class="meta"><i data-i="pin" data-s="12"></i>Ramen Bar, 800m</span><span class="meta"><i data-i="clock" data-s="12"></i>1h 30min</span><div class="row gap8"><span class="pill s lime" style="background:var(--lime)"><i data-i="fork" data-s="10"></i>Food</span><span class="pill s lav">+25 XP</span></div></div></div>
+ <div class="stop fut rv"><span class="tm">21:30</span><span class="nd fut"></span><div class="cd"><h3>Live Jazz Night</h3><span class="meta"><i data-i="pin" data-s="12"></i>Jazz Club TO, 2km</span><span class="meta"><i data-i="clock" data-s="12"></i>2h</span><div class="row gap8"><span class="pill s viola"><i data-i="music" data-s="10"></i>Musica</span><span class="pill s lav">+45 XP</span></div></div></div>
+</div>
+<div class="dock solid"><button class="btn sec" style="flex:1;padding:12px 8px" data-go="13-coordinamento.html"><i data-i="pencil" data-s="16"></i>Modifica tappe</button><button class="btn" style="flex:1;padding:12px 8px" data-go="14-uscita-condivisa.html"><i data-i="tri" data-s="14"></i>Inizia piano</button></div>
+</div></div>
+<script>tabbar('piani');</script></body></html>

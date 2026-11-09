@@ -1,0 +1,73 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Ricerca e filtri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.sbar{flex:1;height:52px;border-radius:16px;box-shadow:0 2px 12px var(--card-shadow);transition:transform .25s var(--ease),border-color .2s,box-shadow .2s}
+.sbar:focus-within{transform:scaleX(1.02)}
+.rec{display:flex;align-items:center;gap:12px;padding:11px 8px;border-radius:12px;transition:background .2s;cursor:pointer}.rec:hover{background:var(--sunk)}
+.rec .t{flex:1;font-size:15px}.rec i{color:var(--g500)}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cc{border-radius:16px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;font:600 13px 'Sora';color:var(--ink);transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-2px);box-shadow:0 8px 20px var(--card-shadow)}
+.ov{position:absolute;inset:0;background:rgba(37,28,53,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}.ov.on{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card-bg);border-radius:24px 24px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.15);z-index:61;transform:translateY(100%);transition:transform .35s var(--ease);padding:0 20px 28px;max-height:88%;overflow-y:auto}
+.sheet.on{transform:none}
+.sheet h3{font:700 20px 'Sora'}
+.fs{margin-top:18px}.fs>b{display:block;font:600 14px 'Sora';margin-bottom:10px}
+.wrap{display:flex;flex-wrap:wrap;gap:8px}
+.sl{position:relative;height:36px;margin-top:26px;touch-action:none;cursor:pointer}
+.sl .tr{position:absolute;left:0;right:0;top:15px;height:6px;border-radius:3px;background:var(--g200)}
+.sl .fl{position:absolute;left:0;top:15px;height:6px;border-radius:3px;background:var(--viola)}
+.sl .th{position:absolute;top:8px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--viola);box-shadow:0 2px 8px rgba(104,69,245,.5);border:3px solid #fff}
+.sl .tip{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font:700 12px 'DM Sans';color:var(--soft-fg);white-space:nowrap}
+.rg{display:flex;justify-content:space-between;font-size:12px;color:var(--fg2);margin-top:-2px}
+</style></head><body>
+<div class="phone"><div class="screen">
+<div class="row gap8" style="padding:52px 20px 8px">
+ <button class="iconbtn" data-go="04-home.html" aria-label="Indietro"><i data-i="back" data-s="24"></i></button>
+ <label class="input sbar"><i data-i="search" data-s="20"></i><input placeholder="Cosa vuoi fare oggi?"></label>
+ <button class="iconbtn" id="of" aria-label="Filtri"><i data-i="filters" data-s="22"></i></button>
+</div>
+<section class="section"><div class="sec between rv"><span>Recenti</span><button class="sm muted" id="clr" style="font-weight:400">Cancella</button></div>
+ <div id="recs">
+  <div class="rec rv"><i data-i="clock" data-s="18"></i><span class="t">Concerti jazz Torino</span><button class="x" aria-label="Rimuovi"><i data-i="x" data-s="14"></i></button></div>
+  <div class="rec rv"><i data-i="clock" data-s="18"></i><span class="t">Yoga all'aperto</span><button class="x" aria-label="Rimuovi"><i data-i="x" data-s="14"></i></button></div>
+  <div class="rec rv"><i data-i="clock" data-s="18"></i><span class="t">Aperitivo San Salvario</span><button class="x" aria-label="Rimuovi"><i data-i="x" data-s="14"></i></button></div>
+  <div class="rec rv"><i data-i="clock" data-s="18"></i><span class="t">Mostre gratuite</span><button class="x" aria-label="Rimuovi"><i data-i="x" data-s="14"></i></button></div>
+ </div></section>
+<section class="section"><div class="sec rv">Esplora per categoria</div>
+ <div class="cats">
+  <a class="cc rv" href="#" data-go="06-risultati.html" style="background:var(--soft)"><i data-i="music" data-s="28" style="color:var(--viola)"></i>Musica</a>
+  <a class="cc rv" href="#" style="background:var(--rosa)"><i data-i="brush" data-s="28"></i>Arte</a>
+  <a class="cc rv" href="#" style="background:var(--lime)"><i data-i="run" data-s="28"></i>Sport</a>
+  <a class="cc rv" href="#" style="background:var(--card-bg);box-shadow:inset 0 0 0 1.5px var(--g300)"><i data-i="fork" data-s="28" style="color:var(--fg)"></i><span style="color:var(--fg)">Food</span></a>
+  <a class="cc rv" href="#" style="background:var(--lilla)"><i data-i="masks" data-s="28"></i>Teatro</a>
+  <a class="cc rv" href="#" style="background:var(--soft)"><i data-i="camera" data-s="28" style="color:var(--viola)"></i><span style="color:var(--fg)">Fotografia</span></a>
+ </div></section>
+<section class="section"><div class="sec rv"><i data-i="flame" data-s="18" style="color:var(--viola)"></i>Di tendenza</div>
+ <div class="hscroll rv" style="padding:2px 0;margin:0 -20px;padding:2px 20px"><span class="pill viola"><i data-i="flame" data-s="12"></i>Street Food Festival</span><span class="pill viola"><i data-i="flame" data-s="12"></i>Notte Bianca</span><span class="pill viola"><i data-i="flame" data-s="12"></i>Yoga Valentino</span></div></section>
+
+<div class="ov" id="ov"></div>
+<div class="sheet" id="sh"><div class="sheet-handle" id="hd"></div>
+ <div class="row between" style="margin-top:4px"><h3>Filtri</h3><button class="violet" style="font-weight:500;font-size:14px" id="rs">Reset</button></div>
+ <div class="fs"><b>Quando</b><div class="wrap" data-single><span class="chip pill on">Oggi</span><span class="chip pill">Domani</span><span class="chip pill">Weekend</span><span class="chip pill">Settimana</span></div></div>
+ <div class="fs"><b>Distanza</b><div class="sl" id="sl"><span class="tr"></span><span class="fl" id="fl"></span><span class="th" id="thm"><span class="tip" id="tip">5 km</span></span></div><div class="rg"><span>1 km</span><span>10 km</span></div></div>
+ <div class="fs"><b>Prezzo</b><div class="wrap" data-single><span class="chip pill on">Gratis</span><span class="chip pill">Fino a 10</span><span class="chip pill">Fino a 20</span><span class="chip pill">20+</span></div></div>
+ <div class="fs"><b>Tipo</b><div class="wrap" data-multi><span class="chip pill on"><i data-i="sun" data-s="14"></i>All'aperto</span><span class="chip pill"><i data-i="home" data-s="14"></i>Al chiuso</span><span class="chip pill"><i data-i="monitor" data-s="14"></i>Online</span></div></div>
+ <button class="btn block tall" style="margin-top:22px" data-go="06-risultati.html"><span>Mostra <span id="rc">23</span> risultati</span></button></div>
+</div></div>
+<script>
+const sh=document.getElementById('sh'),ov=document.getElementById('ov');
+const open=v=>{sh.classList.toggle('on',v);ov.classList.toggle('on',v)};
+of.onclick=()=>{open(true);const r=document.getElementById('rc');countUp(r,23,700)};ov.onclick=()=>open(false);
+if(location.hash==='#filtri')setTimeout(()=>open(true),400);
+document.getElementById('recs').addEventListener('click',e=>{const x=e.target.closest('.x');if(x){const r=x.closest('.rec');r.style.transition='all .25s';r.style.opacity=0;r.style.transform='translateX(30px)';setTimeout(()=>r.remove(),250)}});
+clr.onclick=()=>document.querySelectorAll('.rec .x').forEach(x=>x.click());
+/* slider */
+let val=5;const sl=document.getElementById('sl');
+function setV(v){val=Math.max(1,Math.min(10,v));const p=(val-1)/9*100;fl.style.width=p+'%';thm.style.left=p+'%';tip.textContent=(Math.round(val*2)/2)+' km';document.getElementById('rc').textContent=Math.round(8+val*3);}
+function mv(e){const r=sl.getBoundingClientRect();setV(1+(e.clientX-r.left)/r.width*9);}
+sl.addEventListener('pointerdown',e=>{sl.setPointerCapture(e.pointerId);mv(e);sl.onpointermove=mv});sl.addEventListener('pointerup',()=>sl.onpointermove=null);setV(5);
+let sy=null;hd.addEventListener('pointerdown',e=>{sy=e.clientY});addEventListener('pointerup',e=>{if(sy!==null&&e.clientY-sy>60)open(false);sy=null});
+rs.onclick=()=>{setV(5);sh.querySelectorAll('[data-single]').forEach(g=>{g.querySelectorAll('.chip').forEach((c,i)=>c.classList.toggle('on',i===0))})};
+</script></body></html>

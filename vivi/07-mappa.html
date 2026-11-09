@@ -1,0 +1,49 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Mappa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.hd{position:absolute;top:0;left:0;right:0;z-index:5;background:rgba(255,248,240,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:50px 20px 10px}
+:root[data-theme="dark"] .hd{background:rgba(26,18,37,.9)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hd{background:rgba(26,18,37,.9)}}
+.hd h1{font:700 24px 'Sora';margin-bottom:10px}
+.hd .input{height:46px;box-shadow:0 2px 12px var(--card-shadow)}
+.pills{position:absolute;top:158px;left:0;right:0;z-index:5}
+.mapa{position:absolute;inset:0;background:var(--sunk);overflow:hidden}
+.mapa>svg{position:absolute;inset:0}
+.pin{position:absolute;width:44px;height:52px;margin:-52px 0 0 -22px;cursor:pointer;transition:transform .2s;transform-origin:50% 100%}
+.pin:hover{transform:scale(1.12)}
+.pin.bounce{animation:pb .45s ease}
+@keyframes pb{0%{transform:translateY(0)}40%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+.pin .ic{position:absolute;top:8px;left:0;width:44px;text-align:center;display:grid;place-items:center;color:var(--ink)}
+.pin.on svg.pn{filter:drop-shadow(0 6px 8px rgba(37,28,53,.3))}
+.loc{position:absolute;right:20px;bottom:170px;width:48px;height:48px;border-radius:50%;background:var(--card-bg);box-shadow:0 4px 14px var(--card-shadow);display:grid;place-items:center;color:var(--viola);z-index:6;transition:transform .2s}.loc:hover{transform:scale(1.05)}
+.bs{position:absolute;left:0;right:0;bottom:0;z-index:40;background:var(--card-bg);border-radius:24px 24px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,.1);padding:0 20px 112px;transform:translateY(100%);transition:transform .3s ease}
+.bs.on{transform:none}
+.bs .th{width:60px;height:60px;border-radius:14px;flex-shrink:0}
+.bs h3{font:600 16px 'Sora'}
+</style></head><body>
+<div class="phone"><div class="screen nopad" style="overflow:hidden">
+<div class="mapa"><svg width="393" height="852" viewBox="0 0 393 852">
+ <g stroke="var(--g300)" opacity=".35" stroke-width="1"><path d="M0 60H393M0 120H393M0 180H393M0 240H393M0 300H393M0 360H393M0 420H393M0 480H393M0 540H393M0 600H393M0 660H393M0 720H393M0 780H393"/><path d="M60 0V852M120 0V852M180 0V852M240 0V852M300 0V852M360 0V852"/></g>
+ <g fill="none" stroke="var(--g300)" opacity=".55" stroke-linecap="round"><path d="M-10 640C90 560 150 480 250 450S380 350 410 280" stroke-width="12"/><path d="M60 880C80 700 160 600 170 460S120 220 190 120" stroke-width="9"/><path d="M-10 330C100 360 220 300 300 360S400 520 410 560" stroke-width="7"/><path d="M200 880C220 780 300 760 410 780" stroke-width="7"/></g>
+ <path d="M-10 740C70 700 120 760 200 720S330 640 410 690" stroke="#A98BFF" stroke-width="22" fill="none" opacity=".25"/>
+ <path d="M0 0" /></svg>
+ <div id="pins"></div></div>
+<div class="hd"><h1>Mappa</h1><label class="input"><i data-i="search" data-s="18"></i><input placeholder="Cerca eventi, luoghi..."><i data-i="filters" data-s="18"></i></label></div>
+<div class="pills"><div class="hscroll" data-single id="mp"><span class="chip pill on">Tutti</span><span class="chip pill"><i data-i="music" data-s="14"></i>Musica</span><span class="chip pill"><i data-i="fork" data-s="14"></i>Food</span><span class="chip pill"><i data-i="run" data-s="14"></i>Sport</span><span class="chip pill"><i data-i="brush" data-s="14"></i>Arte</span><span class="chip pill"><i data-i="masks" data-s="14"></i>Teatro</span></div></div>
+<button class="loc" aria-label="La mia posizione"><i data-i="crosshair" data-s="22"></i></button>
+<div class="bs" id="bs"><div class="sheet-handle"></div>
+ <div class="row gap12"><div class="th" id="bt"></div><div class="grow col gap4"><h3 id="bn">Jazz al Magazzino</h3><span class="meta"><i data-i="pin" data-s="13"></i><span id="bl">Magazzino Sul Po</span></span><div class="row gap12"><span class="meta"><i data-i="route" data-s="13"></i>300m</span><span class="meta"><i data-i="clock" data-s="13"></i>Oggi 18:30</span></div></div></div>
+ <div class="row gap12" style="margin-top:16px"><button class="btn sec grow" style="padding:12px 10px"><i data-i="bookmark" data-s="16"></i>Salva</button><button class="btn grow" style="padding:12px 10px" data-go="10-crea-piano.html"><i data-i="plus" data-s="16"></i>Aggiungi al piano</button></div></div>
+</div></div>
+<script>
+tabbar('mappa');
+const P=[['#6845F5','music',28,22,'Jazz al Magazzino','Magazzino Sul Po'],['#FFB7D5','fork',42,52,'Aperitivo al tramonto','Bar Aurora'],['#D9EF70','run',58,32,'Corsa al Valentino','Parco Valentino'],['#A98BFF','brush',22,68,'Mostra fotografica','Galleria Moderna'],['#6845F5','masks',68,62,'Teatro Carignano','Piazza Carignano'],['#FFB7D5','cup',48,18,'Colazione creativa','Caffè Elena']];
+const pins=document.getElementById('pins'),bs=document.getElementById('bs');
+P.forEach((p,i)=>{const d=document.createElement('div');d.className='pin';d.style.left=p[3]+'%';d.style.top=(190+p[2]/100*540)+'px';
+ const fg=p[0]==='#6845F5'?'#fff':'#251C35';
+ d.innerHTML=`<svg width="44" height="52" viewBox="0 0 44 52" style="position:absolute;inset:0;overflow:visible"><ellipse cx="22" cy="50" rx="10" ry="3" fill="#251C35" opacity=".15" style="filter:blur(2px)"/><path class="pn" d="M22 50S4 33 4 20a18 18 0 0136 0C40 33 22 50 22 50z" fill="${p[0]}" stroke="#251C35" stroke-width="2"/><circle cx="22" cy="20" r="12" fill="#fff" opacity=".18"/></svg><span class="ic" style="color:${fg}">${icon(p[1],20)}</span>`;
+ d.onclick=()=>{d.classList.remove('bounce');void d.offsetWidth;d.classList.add('bounce');bt.style.background=p[0];bn.textContent=p[4];bl.textContent=p[5];bs.classList.add('on');};
+ pins.appendChild(d);});
+document.querySelector('.mapa').addEventListener('click',e=>{if(!e.target.closest('.pin'))bs.classList.remove('on')});
+</script></body></html>

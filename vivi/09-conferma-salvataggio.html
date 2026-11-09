@@ -1,0 +1,35 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Conferma salvataggio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.back{position:absolute;inset:0;filter:blur(2px);opacity:.9}
+.ov{position:absolute;inset:0;background:rgba(37,28,53,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:70;transition:opacity .2s}
+.ov.out{opacity:0}
+.modal{position:relative;width:340px;background:var(--card-bg);border-radius:28px;padding:32px 24px 28px;box-shadow:0 20px 60px rgba(37,28,53,.2);text-align:center;overflow:hidden;animation:mi .3s cubic-bezier(.34,1.56,.64,1) both}
+.ov.out .modal{transform:scale(.95);transition:transform .2s}
+@keyframes mi{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.ring{width:80px;height:80px;border-radius:50%;background:var(--soft);margin:0 auto;display:grid;place-items:center;color:var(--viola);animation:rp .6s ease .2s 1}
+@keyframes rp{50%{transform:scale(1.08)}}
+.mod-h{font:700 24px 'Sora';margin-top:16px}
+.say{display:flex;align-items:flex-end;gap:8px;justify-content:center;margin:16px 0 20px}
+.say .bubble{border-radius:12px 12px 12px 4px;transform-origin:left bottom;animation:pop .4s cubic-bezier(.34,1.56,.64,1) .3s both}
+.pt{position:absolute;left:50%;top:76px;border-radius:50%;animation:burst 1s ease-out forwards;opacity:0}
+@keyframes burst{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x),var(--y))}}
+.timer{position:absolute;left:0;bottom:0;height:3px;background:var(--viola);width:100%;animation:tm 4s linear forwards}
+@keyframes tm{to{width:0}}
+</style></head><body>
+<div class="phone"><div class="screen nopad back" style="animation:none">
+ <div style="height:260px;background:var(--lav)"></div><div class="pad" style="margin-top:20px"><div style="font:800 24px 'Sora'">Jazz al Magazzino</div><div style="height:12px"></div><div class="sk" style="height:14px;width:70%"></div><div style="height:10px"></div><div class="sk" style="height:14px;width:55%"></div><div style="height:10px"></div><div class="sk" style="height:14px;width:62%"></div></div></div>
+<div class="ov" id="ov"><div class="modal" id="md">
+ <div class="ring"><i data-i="bookmark+" data-s="36"></i></div>
+ <div class="mod-h">Salvato!</div>
+ <p class="muted" style="margin-top:6px">Jazz al Magazzino aggiunto ai tuoi salvati</p>
+ <div class="say"><span data-m="happy" data-s="56"></span><span class="bubble">Bella scelta!</span></div>
+ <div class="col gap8" style="gap:10px"><button class="btn block" data-go="10-crea-piano.html"><i data-i="clipboard" data-s="18"></i>Aggiungi a un piano</button><button class="btn sec block" id="cl"><i data-i="x" data-s="18"></i>Chiudi</button></div>
+ <div class="timer" id="tm"></div></div></div>
+<script>
+const md=document.getElementById('md'),cols=['#6845F5','#FFB7D5','#D9EF70','#DCD2FF','#A98BFF','#FFB7D5','#D9EF70','#6845F5'];
+cols.forEach((c,i)=>{const p=document.createElement('span');p.className='pt';const s=4+(i%3);const a=i/8*Math.PI*2+.3,r=90+(i*37%60);p.style.cssText=`background:${c};width:${s}px;height:${s}px;--x:${Math.cos(a)*r}px;--y:${Math.sin(a)*r}px;animation-delay:${.15+i*.03}s`;md.appendChild(p)});
+function close(){ov.classList.add('out');setTimeout(()=>location.href='08-dettaglio.html',220)}
+cl.onclick=close;ov.addEventListener('click',e=>{if(e.target===ov)close()});tm.addEventListener('animationend',close);
+</script></body></html>

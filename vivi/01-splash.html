@@ -1,0 +1,50 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Splash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.splash{background:var(--prugna);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;overflow:hidden;animation:none}
+.splash.out{opacity:0;transition:opacity .5s}
+.deco{position:absolute;pointer-events:none;overflow:visible}
+.logo{position:relative;font:800 56px 'Sora';color:var(--lime);letter-spacing:1px;animation:logoIn .6s ease-out both}
+@keyframes logoIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.sp{position:absolute;color:var(--lime);opacity:0;animation:twinkle 2.2s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(25deg)}}
+.mas{margin-top:22px;animation:rise .7s var(--ease) .4s both}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.payoff{margin-top:18px;color:#fff;opacity:0;font-size:16px;animation:fadeTo .7s ease .8s forwards}
+@keyframes fadeTo{to{opacity:.8}}
+.loader{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);width:200px;text-align:center}
+.track{height:4px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.fill{height:100%;width:0;border-radius:2px;background:var(--viola);animation:load 3s ease-in-out forwards,hue 3s linear forwards}
+@keyframes load{to{width:100%}}
+@keyframes hue{0%{background:#6845F5}60%{background:#A98BFF}100%{background:#D9EF70}}
+.loader small{display:block;margin-top:10px;color:#fff;opacity:.5;font-size:12px}
+.pt{position:absolute;border-radius:50%;animation:drift 6s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(8px,-12px)}66%{transform:translate(-6px,-4px)}}
+.replay{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity .4s}
+.replay.show{opacity:1;pointer-events:auto}
+</style></head><body>
+<div class="phone"><div class="screen nopad splash" id="sp">
+  <svg class="deco" style="top:-60px;right:-60px" width="260" height="260"><circle cx="130" cy="130" r="100" fill="#6845F5" opacity=".2" style="filter:blur(60px)"/></svg>
+  <svg class="deco" style="bottom:-40px;left:-50px" width="220" height="220"><circle cx="110" cy="110" r="75" fill="#FFB7D5" opacity=".15" style="filter:blur(50px)"/></svg>
+  <span class="pt" style="--d:0s;width:3px;height:3px;background:#A98BFF;top:300px;left:70px"></span>
+  <span class="pt" style="--d:-1s;width:3px;height:3px;background:#FFB7D5;top:330px;left:320px"></span>
+  <span class="pt" style="--d:-2s;width:3px;height:3px;background:#D9EF70;top:250px;left:290px"></span>
+  <span class="pt" style="--d:-3s;width:3px;height:3px;background:#6845F5;top:400px;left:50px"></span>
+  <span class="pt" style="--d:-4s;width:3px;height:3px;background:#FFB7D5;top:230px;left:110px"></span>
+  <span class="pt" style="--d:-5s;width:3px;height:3px;background:#D9EF70;top:420px;left:340px"></span>
+  <div class="logo">VIVI
+    <svg class="sp" style="--d:.3s;top:-14px;right:-22px" width="18" height="18" viewBox="0 0 24 24"><path d="M12 1l2.500 8.500L23 12l-8.500 2.500L12 23l-2.500-8.500L1 12l8.500-2.500z" fill="currentColor"/></svg>
+    <svg class="sp" style="--d:1s;top:8px;left:-26px;color:#FFB7D5" width="13" height="13" viewBox="0 0 24 24"><path d="M12 1l2.500 8.500L23 12l-8.500 2.500L12 23l-2.500-8.500L1 12l8.500-2.500z" fill="currentColor"/></svg>
+    <svg class="sp" style="--d:1.6s;bottom:-6px;right:6px;color:#A98BFF" width="11" height="11" viewBox="0 0 24 24"><path d="M12 1l2.500 8.500L23 12l-8.500 2.500L12 23l-2.500-8.500L1 12l8.500-2.500z" fill="currentColor"/></svg>
+  </div>
+  <div class="mas float"><span data-m="wave" data-s="120"></span></div>
+  <p class="payoff">La tua città prende vita.</p>
+  <div class="loader"><div class="track"><div class="fill"></div></div><small>Caricamento...</small></div>
+  <button class="btn sec replay" id="rp"><i data-i="refresh" data-s="16"></i>Rivedi splash</button>
+</div></div>
+<script>
+const sp=document.getElementById('sp'),rp=document.getElementById('rp');
+setTimeout(()=>{sp.classList.add('out');setTimeout(()=>rp.classList.add('show'),500)},3000);
+rp.onclick=()=>location.reload();
+</script></body></html>

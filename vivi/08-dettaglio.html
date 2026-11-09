@@ -1,0 +1,43 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Dettaglio attività</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.hero{position:relative;height:260px;background:var(--lav);overflow:hidden}
+.hero>svg{position:absolute;inset:0}
+.fl{position:absolute;top:50px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;color:var(--ink);z-index:2}
+.fl.like.on svg{color:#FF5C8A;fill:var(--rosa)}
+.badge{position:absolute;left:20px;bottom:16px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--ink);z-index:2}
+.info{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.info>div{display:flex;align-items:center;gap:12px;font-size:15px}.info i{color:var(--viola)}
+.xp{background:var(--soft);border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px}
+.xp .bar{height:4px;background:rgba(104,69,245,.2);margin-top:8px}.xp .bar>i{background:var(--lime)}
+.desc{font-size:15px;line-height:1.65}
+.avs .ava{border:2px solid var(--bg);margin-left:-8px;opacity:0;transform:translateX(-10px);transition:all .4s var(--ease);transition-delay:var(--rd)}
+.avs .ava:first-child{margin-left:0}.avs.in .ava{opacity:1;transform:none}
+.vid{width:115px;height:155px;border-radius:14px;flex-shrink:0;position:relative;display:grid;place-items:center;transition:transform .2s}
+.vid:hover{transform:scale(1.03)}
+.vid .pl{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff}
+.vid .vw{position:absolute;left:8px;bottom:8px;background:rgba(37,28,53,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;border-radius:8px;padding:2px 7px;font:700 11px 'DM Sans'}
+</style></head><body>
+<div class="phone"><div class="screen" style="padding-bottom:170px">
+<div class="hero"><svg width="393" height="260"><circle cx="320" cy="60" r="90" fill="#fff" opacity=".1"/><circle cx="60" cy="200" r="70" fill="#6845F5" opacity=".1"/><circle cx="200" cy="130" r="110" fill="#A98BFF" opacity=".12"/><circle cx="330" cy="220" r="40" fill="#fff" opacity=".1"/></svg>
+ <button class="fl" style="left:20px" data-go="04-home.html" aria-label="Indietro"><i data-i="back" data-s="20"></i></button>
+ <button class="fl" style="right:68px" aria-label="Condividi"><i data-i="share" data-s="18"></i></button>
+ <button class="fl like" style="right:20px" aria-label="Mi piace"><i data-i="heart" data-s="18"></i></button>
+ <span class="pill badge"><i data-i="music" data-s="14"></i>Musica</span></div>
+<div class="pad" style="margin-top:20px">
+ <h1 class="rv" style="font:800 24px 'Sora'">Jazz al Magazzino</h1>
+ <div class="row gap8 rv" style="margin-top:10px"><span class="ava s c-rosa" style="width:28px;height:28px;font-size:12px">J</span><span style="font-size:14px">Associazione Jazz Torino</span><span style="color:#fff;background:var(--viola);width:16px;height:16px;border-radius:50%;display:grid;place-items:center"><i data-i="check" data-s="10"></i></span></div>
+ <div class="info rv"><div><i data-i="pin" data-s="18"></i>Magazzino Sul Po, Murazzi</div><div><i data-i="calendar" data-s="18"></i>Venerdì 15 Novembre 2026</div><div><i data-i="clock" data-s="18"></i>21:30 — 00:30</div><div><i data-i="tag" data-s="18"></i>Ingresso gratuito<span class="pill s lime">Gratis</span></div></div>
+ <div class="xp rv"><span data-m="head" data-s="36"></span><div class="grow"><b class="sora violet" style="font:600 14px 'Sora'">Partecipa e guadagna +40 XP!</b><div class="bar"><i data-w="55%"></i></div></div></div>
+ <div class="sec rv" style="margin-top:22px;margin-bottom:8px">Descrizione</div>
+ <p class="desc rv">Una serata dedicata al jazz dal vivo con artisti locali e internazionali. Atmosfera intima, drink e buona musica sulle rive del Po.</p>
+ <a class="row gap4 violet rv" style="margin-top:6px;font-weight:500;font-size:14px" href="#">Leggi tutto <i data-i="down" data-s="12"></i></a>
+ <div class="sec rv" style="margin-top:22px;margin-bottom:10px">Chi partecipa</div>
+ <div class="row gap12 rv"><div class="stack avs" id="avs"><span class="ava m c-rosa" style="--rd:0ms">S</span><span class="ava m c-lime" style="--rd:100ms">M</span><span class="ava m c-lav" style="--rd:200ms">E</span><span class="ava m c-lilla" style="--rd:300ms">L</span><span class="ava m" style="--rd:400ms;background:var(--sunk);color:var(--fg);font:700 11px 'DM Sans'">+40</span></div><span class="sm violet">Tra cui 3 tuoi amici</span></div>
+ <div class="sec rv" style="margin-top:22px;margin-bottom:10px"><i data-i="play" data-s="16" style="color:var(--viola)"></i>Video</div>
+</div>
+<div class="hscroll rv"><div class="vid" style="background:var(--viola)"><span class="pl"><i data-i="tri" data-s="12"></i></span><span class="vw">1.2k</span></div><div class="vid" style="background:var(--rosa)"><span class="pl" style="color:var(--ink)"><i data-i="tri" data-s="12"></i></span><span class="vw">860</span></div><div class="vid" style="background:var(--lilla)"><span class="pl"><i data-i="tri" data-s="12"></i></span><span class="vw">430</span></div></div>
+<div class="dock solid"><button class="btn sec" style="flex:1;padding:12px 8px" data-go="09-conferma-salvataggio.html"><i data-i="bookmark" data-s="16"></i>Salva</button><button class="btn" style="flex:1;padding:12px 8px" data-go="10-crea-piano.html"><i data-i="plus" data-s="16"></i>Aggiungi al piano</button></div>
+</div></div>
+<script>tabbar('scopri');new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}})).observe(document.getElementById('avs'));</script></body></html>

@@ -1,0 +1,41 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Uscita condivisa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.bn{position:relative;height:170px;background:var(--viola);overflow:hidden;color:#fff}
+.bn>svg{position:absolute;right:-60px;top:-40px}
+.bn .ic{position:absolute;top:50px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.18)}
+.bn h1{position:absolute;left:20px;bottom:36px;font:800 22px 'Sora'}
+.bn .st{position:absolute;right:20px;bottom:36px}
+.gi{margin:-20px 20px 0;padding:16px;position:relative;z-index:2;display:flex;flex-direction:column;gap:10px}
+.tr{display:flex;align-items:center;gap:10px;height:48px;padding:0 12px;border-radius:14px;background:var(--card-bg)}
+.tr .t{font:600 13px 'Sora';color:var(--soft-fg);width:42px}
+.dot{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.dot.ok{background:var(--lime);color:var(--ink)}.dot.cur{background:var(--viola);animation:pdot 1.6s infinite}.dot.fu{box-shadow:inset 0 0 0 2px var(--g300)}
+.xpc{background:var(--lime);border-radius:20px;padding:20px;color:var(--ink);display:flex;flex-direction:column;gap:12px}
+.lv{height:8px;border-radius:4px;background:rgba(37,28,53,.2);overflow:hidden}.lv i{display:block;height:100%;width:0;background:#fff;border-radius:4px;transition:width 1.2s ease}
+.bd{flex:1;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;color:#fff;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s;transition-delay:var(--rd)}
+.bd.rv{transform:scale(.9)}.bd.rv.in{transform:none}
+.mom{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.mom i{aspect-ratio:1;border-radius:10px;display:block}
+</style></head><body>
+<div class="phone"><div class="screen">
+<div class="bn"><svg width="260" height="260" viewBox="0 0 260 260"><g fill="none" stroke="#fff" opacity=".08" stroke-width="2"><circle cx="130" cy="130" r="30"/><circle cx="130" cy="130" r="55"/><circle cx="130" cy="130" r="80"/><circle cx="130" cy="130" r="105"/><circle cx="130" cy="130" r="128"/></g></svg>
+ <button class="ic" style="left:20px" data-go="11-timeline.html" aria-label="Indietro"><i data-i="back" data-s="20"></i></button><button class="ic" style="right:20px" aria-label="Condividi"><i data-i="share" data-s="18"></i></button>
+ <h1>Weekend culturale</h1><span class="pill lime s st"><svg width="8" height="8" style="animation:pdot 1.6s infinite;border-radius:50%"><circle cx="4" cy="4" r="4" fill="#4f9a1e"/></svg>In corso</span></div>
+<div class="card gi rv"><div class="row gap8" style="font-weight:600"><i data-i="calendar" data-s="18" style="color:var(--viola)"></i>Sabato 15 Novembre 2026</div>
+ <div class="row gap12"><div class="stack"><span class="ava m c-viola">A</span><span class="ava m c-rosa">S</span><span class="ava m c-lime">M</span><span class="ava m c-lav">E</span><span class="ava m c-lilla">G</span></div><b style="font-weight:600;font-size:14px">5 partecipanti</b></div>
+ <span class="sm muted">Adrian, Sofia, Marco, Elena, Giulia</span></div>
+<div class="section col" style="gap:4px;margin-top:18px"><div class="tr rv"><span class="dot ok"><i data-i="check" data-s="12"></i></span><span class="t">15:00</span><div class="grow"><b style="font:600 14px 'DM Sans'">Mostra Van Gogh</b> <span class="xs muted">· GAM Torino</span></div></div>
+ <div class="tr rv" style="box-shadow:inset 0 0 0 2px var(--viola)"><span class="dot cur"></span><span class="t">17:00</span><div class="grow"><b style="font:600 14px 'DM Sans'">Aperitivo sui Murazzi</b> <span class="xs muted">· Bar Aurora</span></div></div>
+ <div class="tr rv" style="opacity:.7"><span class="dot fu"></span><span class="t" style="color:var(--fg2)">19:00</span><div class="grow"><b style="font:600 14px 'DM Sans'">Cena Giapponese</b> <span class="xs muted">· Ramen Bar</span></div></div>
+ <div class="tr rv" style="opacity:.7"><span class="dot fu"></span><span class="t" style="color:var(--fg2)">21:30</span><div class="grow"><b style="font:600 14px 'DM Sans'">Live Jazz Night</b> <span class="xs muted">· Jazz Club TO</span></div></div></div>
+<div class="section"><div class="xpc rv"><div class="row gap12"><span data-m="party" data-s="64"></span><div><div class="sora" style="font:700 18px 'Sora'">Hai guadagnato +<span data-count="120" data-dur="1500">0</span> XP!</div><div style="font-size:14px;opacity:.7;margin-top:2px">+30 per ogni tappa completata</div></div></div>
+ <div><div class="row between xs" style="font-weight:600;margin-bottom:6px"><span>Livello 12</span><span>65% al Livello 13</span></div><div class="lv"><i data-w="65%"></i></div></div></div></div>
+<div class="section"><div class="sec rv"><i data-i="trophy" data-s="18" style="color:var(--viola)"></i>Badge sbloccati</div>
+ <div class="row gap12" style="align-items:stretch"><div class="bd rv" style="background:var(--prugna)"><i data-i="moon" data-s="28"></i><b style="font:600 13px 'DM Sans'">Esploratore notturno</b><span style="font-size:11px;opacity:.7">Primo nel tuo gruppo!</span></div><div class="bd rv" style="background:var(--viola)"><i data-i="music" data-s="28"></i><b style="font:600 13px 'DM Sans'">Music Lover</b><span style="font-size:11px;opacity:.7">3 concerti vissuti</span></div></div></div>
+<div class="section"><div class="sec rv"><i data-i="camera" data-s="18" style="color:var(--viola)"></i>Momenti</div>
+ <div class="mom rv"><i style="background:var(--lav)"></i><i style="background:var(--rosa)"></i><i style="background:var(--lime)"></i><i style="background:var(--rosa)"></i><i style="background:var(--lime)"></i><i style="background:var(--lav)"></i></div>
+ <button class="btn sec block" style="margin-top:10px;border-radius:10px;padding:10px"><i data-i="plus" data-s="16"></i>Aggiungi foto</button></div>
+<div class="section row gap12"><button class="btn sec" style="flex:1;padding:12px 8px" data-go="10-crea-piano.html"><i data-i="refresh" data-s="16"></i>Ripeti piano</button><button class="btn" style="flex:1;padding:12px 8px" data-go="10-crea-piano.html"><i data-i="plus" data-s="16"></i>Crea nuovo piano</button></div>
+</div></div>
+<script>tabbar('gruppi');</script></body></html>

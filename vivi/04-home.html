@@ -1,0 +1,76 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.hero{position:relative;height:440px;background:var(--prugna);overflow:hidden;color:#fff}
+.hero .amb{position:absolute;left:50%;top:50%;transform:translate(-50%,-60%);overflow:visible}
+.hero .shade{position:absolute;left:-30px;right:-30px;bottom:-60px;height:260px;background:var(--prugna);filter:blur(26px);opacity:.92}
+.hero .top{position:absolute;top:50px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.hello{font:700 20px 'Sora';display:flex;align-items:center;gap:8px}
+.bellb{position:relative;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.bellb b{position:absolute;top:7px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--rosa);animation:ping 1.6s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,183,213,.6)}100%{box-shadow:0 0 0 8px rgba(255,183,213,0)}}
+.playb{position:absolute;left:50%;top:44%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;transition:transform .2s,background .2s;animation:bpulse 2.4s ease-in-out infinite;z-index:2}
+.playb:hover{transform:scale(1.08);background:rgba(255,255,255,.3)}.playb svg{margin-left:2px}
+@keyframes bpulse{50%{border-color:rgba(255,255,255,.15)}}
+.side{position:absolute;right:16px;top:150px;display:flex;flex-direction:column;gap:20px;align-items:center;z-index:3}
+.side button{display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;font:700 11px 'DM Sans';filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.side .like.on svg{color:#FF5C8A;fill:#FF5C8A}
+.info{position:absolute;left:20px;right:70px;bottom:44px;z-index:3;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cr{display:flex;align-items:center;gap:8px;font:700 14px 'DM Sans'}
+.cr .av{width:30px;height:30px;border-radius:50%;background:var(--lilla);display:grid;place-items:center;overflow:hidden}
+.vm{display:flex;gap:12px;font-size:13px;opacity:.85;flex-wrap:wrap}.vm span{display:inline-flex;align-items:center;gap:4px}
+.vdots{position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:3}
+.vdots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.35);transition:width .3s,background .3s}.vdots i.on{width:24px;background:#fff}
+.vslide{transition:opacity .5s}
+.pn{display:flex;gap:12px;padding:20px}
+.pn a{flex:1;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 12px var(--card-shadow);transition:transform .25s,box-shadow .25s}
+.pn a:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(37,28,53,.18)}.pn a:active{transform:scale(.97)}
+.pn small{font-size:13px;opacity:.7;color:var(--ink)}
+.ev{display:flex;overflow:hidden;border-radius:20px;height:105px}
+.ev .th{width:105px;position:relative;flex-shrink:0;display:grid;place-items:center}
+.ev .pl{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;color:var(--ink)}
+.ev .inf{padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;flex:1}
+.ev h3{font:600 15px 'Sora'}.ev .meta{font-size:13px}
+.bigc{position:relative;height:180px;border-radius:20px;overflow:hidden;display:block}
+.bigc .shade2{position:absolute;left:-20px;right:-20px;bottom:-40px;height:120px;background:var(--prugna);filter:blur(20px);opacity:.85}
+.bigc .t{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+.bigc .t h3{font:700 18px 'Sora';margin-bottom:6px}
+.bigc .tr{position:absolute;top:12px;right:12px}
+</style></head><body>
+<div class="phone"><div class="screen">
+<section class="hero">
+ <svg class="amb" width="400" height="400"><circle cx="200" cy="200" r="130" fill="#6845F5" opacity=".25" style="filter:blur(60px)"/></svg>
+ <div class="shade"></div>
+ <div class="top"><div class="hello">Ciao, Adrian <i data-i="hand" data-s="16"></i></div><button class="bellb" aria-label="Notifiche"><i data-i="bell" data-s="22"></i><b></b></button></div>
+ <button class="playb" aria-label="Riproduci"><i data-i="tri" data-s="20"></i></button>
+ <div class="side"><button class="like" aria-label="Mi piace"><i data-i="heart" data-s="26"></i><span class="cnt" data-base="234">234</span></button><button><i data-i="comment" data-s="26"></i>45</button><button><i data-i="share" data-s="26"></i></button><button class="like" aria-label="Salva"><i data-i="bookmark" data-s="26"></i></button></div>
+ <div class="info vslide" id="vi"><div class="cr"><span class="av"><span data-m="head" data-s="22"></span></span>@marco_torino<span class="pill s viola">+30 XP</span></div>
+  <h2 class="t-md" id="vt">Aperitivo al tramonto</h2>
+  <div class="vm"><span><i data-i="pin" data-s="14"></i><b id="vp" style="font-weight:400">Bar Aurora, 300m</b></span><span><i data-i="clock" data-s="14"></i><b id="vh" style="font-weight:400">Oggi 18:30</b></span><span><i data-i="users" data-s="14"></i>24</span></div>
+  <button class="btn sm" style="padding:10px 20px;font-size:14px;box-shadow:0 4px 20px rgba(104,69,245,.4)" data-go="08-dettaglio.html">Partecipa <i data-i="check" data-s="14"></i></button></div>
+ <div class="vdots" id="vd"><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+<div class="pn">
+ <a href="#" data-go="10-crea-piano.html" class="rv" style="background:var(--soft)"><i data-i="clipboard" data-s="32" style="color:var(--soft-fg)"></i><b class="sora violet" style="font-size:16px;margin-top:6px">PLAN</b><small style="color:var(--fg)">Organizziamo qualcosa?</small></a>
+ <a href="#" data-go="06-risultati.html" class="rv" style="background:var(--lime);color:var(--ink)"><i data-i="bolt" data-s="32" style="color:var(--ink)"></i><b class="sora" style="font-size:16px;margin-top:6px">NOW</b><small>Cosa faccio adesso?</small></a>
+</div>
+<div class="hscroll rv" data-single id="cats"><span class="chip pill on" data-c="Per te"><i data-i="flame" data-s="14"></i>Per te</span><span class="chip pill"><i data-i="music" data-s="14"></i>Musica</span><span class="chip pill"><i data-i="brush" data-s="14"></i>Arte</span><span class="chip pill"><i data-i="run" data-s="14"></i>Sport</span><span class="chip pill"><i data-i="fork" data-s="14"></i>Food</span><span class="chip pill"><i data-i="masks" data-s="14"></i>Teatro</span><span class="chip pill"><i data-i="camera" data-s="14"></i>Foto</span></div>
+<section class="section"><div class="sec between rv"><span class="sec big" style="margin:0">Eventi vicino a te</span><a class="sm violet row gap4" style="font-weight:500" href="#" data-go="06-risultati.html">Vedi tutti <i data-i="right" data-s="12"></i></a></div>
+ <div class="col gap12">
+  <a class="card ev rv" href="#" data-go="08-dettaglio.html"><div class="th" style="background:var(--lav)"><span class="pl"><i data-i="tri" data-s="12"></i></span></div><div class="inf"><h3>Mostra fotografica</h3><span class="meta"><i data-i="pin" data-s="12"></i>Galleria Moderna, 1.2km</span><div class="row gap12"><span class="meta"><i data-i="clock" data-s="12"></i>Oggi 16:00</span><span class="meta"><i data-i="users" data-s="12"></i>18</span><span class="pill s lav">3 video</span></div></div></a>
+  <a class="card ev rv" href="#"><div class="th" style="background:var(--lime)"></div><div class="inf"><h3>Yoga al parco</h3><span class="meta"><i data-i="pin" data-s="12"></i>Parco Valentino, 800m</span><div class="row gap12"><span class="meta"><i data-i="clock" data-s="12"></i>Dom 9:00</span><span class="meta"><i data-i="users" data-s="12"></i>12</span></div></div></a>
+  <a class="card ev rv" href="#"><div class="th" style="background:var(--rosa)"><span class="pl"><i data-i="tri" data-s="12"></i></span></div><div class="inf"><h3>Live Jazz Night</h3><span class="meta"><i data-i="pin" data-s="12"></i>Jazz Club TO, 2km</span><div class="row gap12"><span class="meta"><i data-i="clock" data-s="12"></i>Sab 22:00</span><span class="meta"><i data-i="users" data-s="12"></i>32</span><span class="pill s lav">5 video</span></div></div></a>
+ </div></section>
+<section class="section"><div class="sec between rv"><span class="sec big" style="margin:0">Il weekend in città</span><a class="sm violet row gap4" style="font-weight:500" href="#">Vedi tutti <i data-i="right" data-s="12"></i></a></div>
+ <div class="col gap16" style="gap:14px">
+  <a class="bigc rv card" href="#" style="background:var(--lav)"><svg style="position:absolute;right:-20px;top:-20px" width="160" height="160"><circle cx="80" cy="80" r="70" fill="#A98BFF" opacity=".35"/><circle cx="80" cy="80" r="45" fill="#6845F5" opacity=".2"/></svg><span class="pill lime s tr"><i data-i="flame" data-s="12"></i>Trending</span><div class="shade2"></div><div class="t"><h3>Festival Street Food</h3><div class="vm"><span><i data-i="pin" data-s="13"></i>Piazza Castello</span><span><i data-i="calendar" data-s="13"></i>Sab-Dom</span></div></div></a>
+  <a class="bigc rv card" href="#" style="background:var(--rosa)"><svg style="position:absolute;left:-30px;top:-30px" width="180" height="180"><circle cx="90" cy="90" r="70" fill="#fff" opacity=".3"/></svg><div class="shade2"></div><div class="t"><h3>Notte dei Musei</h3><div class="vm"><span><i data-i="pin" data-s="13"></i>Centro storico</span><span><i data-i="calendar" data-s="13"></i>Sabato 21:00</span></div></div></a>
+ </div></section>
+</div>
+<script>
+tabbar('scopri');
+const V=[['Aperitivo al tramonto','Bar Aurora, 300m','Oggi 18:30'],['Jazz al Magazzino','Magazzino Sul Po, 1km','Ven 21:30'],['Yoga all\'alba','Parco Valentino, 800m','Dom 7:00'],['Street food tour','Piazza Castello, 1.5km','Sab 12:00']];
+const vi=document.getElementById('vi'),vd=[...document.querySelectorAll('#vd i')];let k=0;
+setInterval(()=>{k=(k+1)%4;vi.style.opacity=0;setTimeout(()=>{vt.textContent=V[k][0];vp.textContent=V[k][1];vh.textContent=V[k][2];vi.style.opacity=1},250);vd.forEach((d,i)=>d.classList.toggle('on',i===k));},3000);
+</script></body></html>

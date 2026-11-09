@@ -1,0 +1,67 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Stati speciali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.top{position:absolute;top:0;left:0;right:0;z-index:30;background:var(--bg);padding:50px 20px 0;display:flex;border-bottom:1px solid var(--line)}
+.top button{flex:1;padding:12px 0;font:600 13px 'DM Sans';color:var(--fg2);border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .2s}.top button.on{color:var(--soft-fg);border-color:var(--viola)}
+.st{display:none;flex-direction:column;align-items:center;text-align:center;padding:130px 24px 0;gap:10px;position:relative;min-height:760px;animation:xf .35s ease both}.st.on{display:flex}
+@keyframes xf{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+.st h2{font:700 20px 'Sora'}.st p{color:var(--fg2);font-size:15px;max-width:290px}
+.dc{position:absolute;opacity:.1;color:var(--viola)}
+.hv{animation:hv 3s ease-in-out infinite}@keyframes hv{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.dots{display:flex;gap:8px;margin-top:20px}.dots i{width:12px;height:12px;border-radius:50%;animation:bn .9s ease-in-out infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bn{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.skc{display:flex;gap:12px;width:100%;padding:10px;background:var(--card-bg);border-radius:16px}.skc .sk{border-radius:12px}
+.shake{animation:shk 1.2s ease-in-out infinite}@keyframes shk{0%,100%{transform:rotate(0)}15%{transform:rotate(-8deg)}30%{transform:rotate(8deg)}45%{transform:rotate(-5deg)}60%{transform:rotate(0)}}
+.circ{width:100px;height:100px;border-radius:50%;background:var(--lime);display:grid;place-items:center;position:relative}
+.circ svg path{stroke-dasharray:40;stroke-dashoffset:40;animation:dr .8s ease .2s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.pt{position:absolute;left:50%;top:180px;border-radius:50%;opacity:0;animation:burst 1s ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x),var(--y))}}
+.spin.go svg{animation:sp .6s ease}@keyframes sp{to{transform:rotate(360deg)}}
+</style></head><body>
+<div class="phone"><div class="screen nopad" style="padding-bottom:100px" id="sc">
+<div class="top" id="tabs"><button class="on" data-s="vuoto">Vuoto</button><button data-s="carica">Caricamento</button><button data-s="errore">Errore</button><button data-s="conferma">Conferma</button></div>
+
+<section class="st on" id="vuoto">
+ <i class="dc" style="left:40px;top:180px;transform:rotate(-20deg)"><i data-i="music" data-s="44"></i></i><i class="dc" style="right:34px;top:240px;transform:rotate(18deg)"><i data-i="brush" data-s="44"></i></i><i class="dc" style="left:60px;top:470px;transform:rotate(12deg)"><i data-i="fork" data-s="44"></i></i><i class="dc" style="right:50px;top:520px;transform:rotate(-14deg)"><i data-i="camera" data-s="40"></i></i>
+ <span class="bubble white" style="--d:.4s;margin-bottom:6px">Qui è un po' tranquillo. Cambiamo zona?</span>
+ <span class="hv" data-m="search" data-s="140"></span>
+ <h2 style="margin-top:12px">Nessun risultato</h2><p>Prova a cercare qualcosa di diverso o cambia i filtri</p>
+ <button class="btn" style="margin-top:8px" data-go="05-ricerca.html"><i data-i="search" data-s="18"></i>Esplora tutto</button><button class="btn sec" data-go="05-ricerca.html#filtri"><i data-i="filters" data-s="18"></i>Cambia filtri</button></section>
+
+<section class="st" id="carica">
+ <div class="dots"><i style="background:var(--viola)"></i><i style="background:var(--lilla)"></i><i style="background:var(--lav)"></i></div>
+ <div class="row gap8" style="margin-top:16px;align-items:flex-end"><span data-m="search" data-s="72"></span><span class="bubble white" style="margin-bottom:34px;--d:.2s">Vediamo cosa succede in città...</span></div>
+ <div class="col gap12" style="width:100%;margin-top:18px;gap:12px">
+  <div class="skc"><div class="sk" style="width:100px;height:100px"></div><div class="grow col gap8" style="padding-top:8px;gap:10px"><div class="sk" style="height:14px;width:80%"></div><div class="sk" style="height:12px;width:60%"></div><div class="sk" style="height:12px;width:40%"></div></div></div>
+  <div class="skc"><div class="sk" style="width:100px;height:100px"></div><div class="grow col gap8" style="padding-top:8px;gap:10px"><div class="sk" style="height:14px;width:70%"></div><div class="sk" style="height:12px;width:85%"></div><div class="sk" style="height:12px;width:50%"></div></div></div>
+  <div class="skc"><div class="sk" style="width:100px;height:100px"></div><div class="grow col gap8" style="padding-top:8px;gap:10px"><div class="sk" style="height:14px;width:90%"></div><div class="sk" style="height:12px;width:55%"></div><div class="sk" style="height:12px;width:70%"></div></div></div></div></section>
+
+<section class="st" id="errore">
+ <i class="shake" data-i="warning" data-s="40" style="color:#FF7FB0"></i>
+ <span class="bubble rosa" style="--d:.3s">Ops, qualcosa non ha funzionato</span>
+ <span data-m="sad" data-s="140"></span>
+ <h2 style="margin-top:10px">Errore di caricamento</h2><p>Controlla la connessione e riprova tra qualche secondo</p>
+ <button class="btn spin" id="rt" style="margin-top:8px"><i data-i="refresh" data-s="18"></i>Riprova</button>
+ <a class="row gap6 violet sm" style="font-weight:500;margin-top:6px" href="#"><i data-i="comment" data-s="14"></i>Segnala il problema</a></section>
+
+<section class="st" id="conferma"></section>
+</div></div>
+<script>
+tabbar('scopri');
+const tabs=[...document.querySelectorAll('#tabs button')],secs=[...document.querySelectorAll('.st')];
+function conferma(){const s=document.getElementById('conferma');
+ s.innerHTML=`<div class="circ"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#251C35" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></div>
+ <div class="row gap8" style="margin-top:6px;align-items:flex-end"><span data-m="party" data-s="70"></span><span class="bubble" style="margin-bottom:30px;--d:.5s;font-family:Sora;font-weight:600">Fatto! Tutto a posto</span></div>
+ <h2 style="font-size:24px">Piano creato!</h2><p>Il tuo Weekend culturale è pronto. Abbiamo avvisato i tuoi amici!</p>
+ <div class="sora violet" style="font:800 28px 'Sora'">+<span id="xpn">0</span> XP</div>
+ <button class="btn" data-go="11-timeline.html"><i data-i="clipboard" data-s="18"></i>Vedi il piano</button><button class="btn sec" data-go="04-home.html"><i data-i="home" data-s="18"></i>Torna alla Home</button>`;
+ const cols=['#6845F5','#FFB7D5','#D9EF70','#A98BFF','#DCD2FF','#FFB7D5','#6845F5','#D9EF70','#A98BFF','#FFB7D5','#D9EF70','#6845F5'];
+ cols.forEach((c,i)=>{const p=document.createElement('span');p.className='pt';const a=i/12*Math.PI*2,r=80+(i*29%50),z=3+i%3;p.style.cssText=`background:${c};width:${z}px;height:${z}px;--x:${Math.cos(a)*r}px;--y:${Math.sin(a)*r}px;animation-delay:${.7+i*.03}s`;s.appendChild(p)});
+ hydrate(s);countUp(document.getElementById('xpn'),120,1500);}
+function show(k){tabs.forEach(t=>t.classList.toggle('on',t.dataset.s===k));secs.forEach(s=>s.classList.toggle('on',s.id===k));if(k==='conferma')conferma();document.getElementById('sc').scrollTop=0;}
+tabs.forEach(t=>t.onclick=()=>show(t.dataset.s));
+rt.onclick=()=>{rt.classList.remove('go');void rt.offsetWidth;rt.classList.add('go')};
+if(location.hash.length>1)show(location.hash.slice(1));
+</script></body></html>

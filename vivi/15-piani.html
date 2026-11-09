@@ -1,0 +1,38 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Piani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.tabs{position:relative;display:flex;border-bottom:1px solid var(--line);margin:0 20px}
+.tabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 0;font:600 14px 'DM Sans';color:var(--fg2);transition:color .2s}
+.tabs button.on{color:var(--soft-fg)}
+.tabs .ind{position:absolute;bottom:-1px;left:0;width:33.333%;height:3px;border-radius:3px;background:var(--viola);transition:transform .3s var(--ease)}
+.pane{display:none;flex-direction:column;gap:14px}.pane.on{display:flex}
+.plan{padding:18px;display:flex;flex-direction:column;gap:10px;position:relative}
+.plan .d{display:flex;align-items:center;gap:6px;font:600 12px 'DM Sans';color:var(--soft-fg)}
+.plan h3{font:700 17px 'Sora'}
+.ft{display:flex;align-items:center;gap:10px}
+.sv{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--card-bg);box-shadow:0 2px 12px var(--card-shadow)}
+</style></head><body>
+<div class="phone"><div class="screen">
+<div class="row between" style="padding:50px 20px 14px"><h1 style="font:700 24px 'Sora'">I tuoi Piani</h1><button class="btn sm" data-go="10-crea-piano.html"><i data-i="plus" data-s="16"></i>Nuovo</button></div>
+<div class="tabs" id="tb"><button class="on"><i data-i="clipboard" data-s="14"></i>In programma</button><button><i data-i="bookmark" data-s="14"></i>Salvati</button><button><i data-i="checkc" data-s="14"></i>Completati</button><span class="ind" id="ind"></span></div>
+<div class="section" style="margin-top:18px">
+<div class="pane on">
+ <a class="card plan rv" href="#" data-go="11-timeline.html"><span class="d"><i data-i="calendar" data-s="14"></i>Sabato 15 Nov</span><h3>Weekend culturale</h3><div class="row gap6" style="flex-wrap:wrap"><span class="pill s lav">Mostra</span><span class="pill s lime">Aperitivo</span><span class="pill s rosa">Live</span></div><div class="ft"><div class="stack"><span class="ava s c-viola">A</span><span class="ava s c-rosa">S</span><span class="ava s c-lime">M</span></div><span class="sm muted">+2</span><b class="sora violet grow" style="font:700 14px 'Sora';text-align:right">+120 XP</b></div><span class="pill s lime" style="position:absolute;top:16px;right:16px"><i data-i="check" data-s="11"></i>Confermato</span></a>
+ <a class="card plan rv" href="#"><span class="d"><i data-i="calendar" data-s="14"></i>Domenica 16 Nov</span><h3>Giornata sportiva</h3><div class="row gap6"><span class="pill s lime">Yoga</span><span class="pill s lav">Corsa</span></div><div class="ft"><div class="stack"><span class="ava s c-viola">A</span><span class="ava s c-lilla">L</span></div><b class="sora violet grow" style="font:700 14px 'Sora';text-align:right">+80 XP</b></div><span class="pill s warn" style="position:absolute;top:16px;right:16px"><i data-i="clock" data-s="11"></i>In attesa</span></a>
+ <a class="card plan rv" href="#"><span class="d"><i data-i="calendar" data-s="14"></i>Venerdì 21 Nov</span><h3>Serata food tour</h3><div class="row gap6"><span class="pill s rosa">Street Food</span><span class="pill s lime">Degustazione</span></div><div class="ft"><div class="stack"><span class="ava s c-viola">A</span><span class="ava s c-rosa">S</span><span class="ava s c-lav">E</span></div><span class="sm muted">+4</span><b class="sora violet grow" style="font:700 14px 'Sora';text-align:right">+150 XP</b></div><span class="pill s lime" style="position:absolute;top:16px;right:16px"><i data-i="check" data-s="11"></i>Confermato</span></a>
+</div>
+<div class="pane"><div class="sm muted">Attività che ti interessano</div>
+ <div class="sv"><i data-i="heart+" data-s="16" style="color:#FF5C8A"></i><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Jazz al Magazzino</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Magazzino Sul Po</span><span class="meta"><i data-i="calendar" data-s="12"></i>Ven 21:30</span></div></div><button class="btn line sm" style="padding:6px 10px;font-size:12px"><i data-i="plus" data-s="12"></i>Piano</button></div>
+ <div class="sv"><i data-i="heart+" data-s="16" style="color:#FF5C8A"></i><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Yoga al parco</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Parco Valentino</span><span class="meta"><i data-i="calendar" data-s="12"></i>Dom 9:00</span></div></div><button class="btn line sm" style="padding:6px 10px;font-size:12px"><i data-i="plus" data-s="12"></i>Piano</button></div>
+ <div class="sv"><i data-i="heart+" data-s="16" style="color:#FF5C8A"></i><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Mostra fotografica</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Galleria Moderna</span><span class="meta"><i data-i="calendar" data-s="12"></i>Oggi 16:00</span></div></div><button class="btn line sm" style="padding:6px 10px;font-size:12px"><i data-i="plus" data-s="12"></i>Piano</button></div>
+ <div class="sv"><i data-i="heart+" data-s="16" style="color:#FF5C8A"></i><div class="grow col gap4"><b class="sora" style="font:600 14px 'Sora'">Festival Street Food</b><div class="row gap12"><span class="meta"><i data-i="pin" data-s="12"></i>Piazza Castello</span><span class="meta"><i data-i="calendar" data-s="12"></i>Sab-Dom</span></div></div><button class="btn line sm" style="padding:6px 10px;font-size:12px"><i data-i="plus" data-s="12"></i>Piano</button></div></div>
+<div class="pane">
+ <div class="card plan" style="opacity:.85"><span class="pill s lav" style="position:absolute;top:16px;right:16px"><i data-i="check" data-s="11"></i>Completato</span><h3>Notte dei Musei</h3><div class="row gap12"><b class="sora violet" style="font:700 14px 'Sora'">+80 XP guadagnati</b></div><span class="meta"><i data-i="trophy" data-s="14"></i>2 badge sbloccati</span></div>
+ <div class="card plan" style="opacity:.85"><span class="pill s lav" style="position:absolute;top:16px;right:16px"><i data-i="check" data-s="11"></i>Completato</span><h3>Aperitivo Diffuso</h3><div class="row gap12"><b class="sora violet" style="font:700 14px 'Sora'">+60 XP</b></div><span class="meta"><i data-i="trophy" data-s="14"></i>1 badge</span></div></div>
+</div></div></div>
+<script>
+tabbar('piani');
+const tb=[...document.querySelectorAll('#tb button')],pn=[...document.querySelectorAll('.pane')];
+tb.forEach((b,i)=>b.onclick=()=>{tb.forEach((x,k)=>x.classList.toggle('on',k===i));pn.forEach((p,k)=>p.classList.toggle('on',k===i));ind.style.transform=`translateX(${i*100}%)`;pn[i].querySelectorAll('.rv').forEach(e=>e.classList.add('in'));});
+</script></body></html>

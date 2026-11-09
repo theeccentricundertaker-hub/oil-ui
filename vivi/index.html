@@ -1,0 +1,24 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Tutte le schermate</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8F0;--fg:#251C35;--card:#fff;--muted:#8E8E93;--viola:#6845F5;--lime:#D9EF70}
+:root[data-theme="dark"]{--bg:#1A1225;--fg:#F0ECF5;--card:#2A2035;--muted:#A59FB0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1225;--fg:#F0ECF5;--card:#2A2035;--muted:#A59FB0}}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--fg);font:400 15px 'DM Sans',system-ui,sans-serif;padding:40px 24px 60px}
+header{max-width:1200px;margin:0 auto 32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+h1{font:800 40px 'Sora',sans-serif;color:var(--viola)}header p{color:var(--muted);flex:1;min-width:220px}
+button{font:600 14px 'DM Sans';background:var(--viola);color:#fff;border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
+.grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:28px}
+a{color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:transform .2s}a:hover{transform:translateY(-4px)}
+.fr{position:relative;width:216px;height:468px;border-radius:26px;overflow:hidden;box-shadow:0 0 0 5px #251C35,0 16px 36px rgba(37,28,53,.25);margin:0 auto;background:var(--card)}
+iframe{width:393px;height:852px;border:0;transform:scale(.55);transform-origin:0 0;pointer-events:none}
+.n{font:700 13px 'Sora';color:var(--muted)}.t{font:600 16px 'Sora'}
+</style></head><body>
+<header><h1>VIVI</h1><p>18 schermate dell'app. Clicca una schermata per aprirla interattiva (dark mode automatica, oppure usa il pulsante).</p><button id="th">Dark mode</button></header>
+<div class="grid" id="g"></div>
+<script>
+const S=[['01-splash','Splash Screen'],['02-onboarding','Onboarding'],['03-login','Login e Registrazione'],['04-home','Home / Scopri'],['05-ricerca','Ricerca e Filtri'],['06-risultati','Risultati'],['07-mappa','Mappa interattiva'],['08-dettaglio','Dettaglio attività'],['09-conferma-salvataggio','Conferma salvataggio'],['10-crea-piano','Crea un piano'],['11-timeline','Programma e timeline'],['12-invito','Invito partecipanti'],['13-coordinamento','Coordinamento e voti'],['14-uscita-condivisa','Uscita condivisa'],['15-piani','Piani'],['16-profilo','Profilo'],['17-badge','Badge e progressi'],['18-stati','Stati speciali']];
+let dark=false;const g=document.getElementById('g');
+function render(){g.innerHTML=S.map(([f,t],i)=>`<a href="${f}.html${dark?'?theme=dark':''}"><div class="fr"><iframe loading="lazy" src="${f}.html${dark?'?theme=dark':''}" title="${t}" tabindex="-1"></iframe></div><div style="text-align:center"><div class="n">${String(i+1).padStart(2,'0')}</div><div class="t">${t}</div></div></a>`).join('');}
+render();th.onclick=()=>{dark=!dark;document.documentElement.dataset.theme=dark?'dark':'light';th.textContent=dark?'Light mode':'Dark mode';render();};
+</script></body></html>

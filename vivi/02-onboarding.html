@@ -1,0 +1,52 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.ob{overflow:hidden}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding:60px 28px 0;transition:transform .4s var(--ease),opacity .4s var(--ease);transform:translateX(100%);opacity:1}
+.slide.on{transform:none}.slide.out{transform:translateX(-30%);opacity:0}
+.art{position:relative;width:393px;height:340px;display:grid;place-items:center;margin-top:6px}
+.disc{position:absolute;width:240px;height:240px;border-radius:50%}
+.orb{position:absolute;width:290px;height:290px;left:50%;top:50%;margin:-145px 0 0 -145px;animation:spin 30s linear infinite}
+.art>i,.art>span[class]{position:relative;z-index:1}
+.art>i{display:block}
+.orb>span{position:absolute;width:44px;height:44px;border-radius:50%;background:var(--card-bg);box-shadow:0 4px 14px var(--card-shadow);display:grid;place-items:center;color:var(--viola);animation:spin 30s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slide h2{font:800 26px 'Sora';text-align:center;margin-top:8px}
+.slide p{color:var(--fg2);font-size:16px;text-align:center;max-width:300px;margin-top:12px}
+.foot{position:absolute;left:0;right:0;bottom:46px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:5}
+.dots{display:flex;gap:6px}.dots i{width:6px;height:6px;border-radius:3px;background:var(--g300);transition:width .3s,background .3s}.dots i.on{width:24px;background:var(--viola)}
+.skip{font-size:14px;color:var(--fg2);height:20px}.skip:hover{text-decoration:underline}
+#next.beat{animation:beat .4s}
+@keyframes beat{50%{transform:scale(1.02)}}
+</style></head><body>
+<div class="phone"><div class="screen nopad ob">
+<div class="slides" id="slides">
+ <section class="slide on"><div class="art"><div class="disc" style="background:var(--soft)"></div>
+  <i data-i="search" data-s="80" style="color:var(--viola)"></i>
+  <div class="orb"><span style="left:0;top:0"><i data-i="music" data-s="28"></i></span><span style="right:0;top:0"><i data-i="brush" data-s="28"></i></span><span style="left:0;bottom:0"><i data-i="run" data-s="28"></i></span><span style="right:0;bottom:0"><i data-i="fork" data-s="28"></i></span></div></div>
+  <h2>Scopri cosa succede</h2><p>Eventi, attività e luoghi vicino a te. Tutto in un posto solo.</p></section>
+ <section class="slide"><div class="art"><div class="disc" style="background:var(--rosa)"></div>
+  <i data-i="calendar" data-s="80" style="color:var(--prugna)"></i>
+  <div class="orb"><span style="left:0;top:0"><i data-i="clock" data-s="28"></i></span><span style="right:0;top:0"><i data-i="users" data-s="28"></i></span><span style="left:0;bottom:0"><i data-i="pin" data-s="28"></i></span><span style="right:0;bottom:0"><i data-i="star" data-s="28"></i></span></div></div>
+  <h2>Organizza il tuo tempo</h2><p>Crea piani con gli amici, scegli cosa fare e quando.</p></section>
+ <section class="slide"><div class="art"><div class="disc" style="background:var(--lime)"></div>
+  <span data-m="party" data-s="150" class="float"></span>
+  <div class="orb"><span style="left:0;top:0"><i data-i="trophy" data-s="28"></i></span><span style="right:0;top:0"><i data-i="star" data-s="28"></i></span><span style="left:0;bottom:0"><i data-i="heart" data-s="28"></i></span><span style="right:0;bottom:0"><i data-i="flame" data-s="28"></i></span></div></div>
+  <h2>Vivi la tua città</h2><p>Guadagna badge, esplora nuovi posti e fai vivere la città.</p></section>
+</div>
+<div class="foot"><div class="dots" id="dots"><i class="on"></i><i></i><i></i></div>
+ <button class="btn block tall" id="next">Avanti</button><button class="skip" id="skip" data-go="03-login.html">Salta</button></div>
+</div></div>
+<script>
+let n=0;const S=[...document.querySelectorAll('.slide')],D=[...document.querySelectorAll('#dots i')],nx=document.getElementById('next'),sk=document.getElementById('skip');
+function go(i){if(i===n||i<0||i>2)return;const o=S[n];o.classList.remove('on');o.classList.add('out');if(i<n){S[i].style.transition='none';S[i].style.transform='translateX(-30%)';S[i].offsetWidth;S[i].style.transition='';}
+ S[i].classList.remove('out');S[i].classList.add('on');S[i].style.transform='';n=i;
+ D.forEach((d,k)=>d.classList.toggle('on',k===i));
+ nx.innerHTML=i===2?'Inizia '+icon('arrow',18):'Avanti';nx.classList.remove('beat');void nx.offsetWidth;nx.classList.add('beat');sk.style.visibility=i===2?'hidden':'visible';
+ setTimeout(()=>{S.forEach((s,k)=>{if(k>i)s.style.transform=''})},400);}
+nx.onclick=()=>{if(n===2){location.href='03-login.html';}else go(n+1)};
+let x0=null;const ph=document.querySelector('.screen');
+ph.addEventListener('pointerdown',e=>x0=e.clientX);ph.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(dx<-50)go(n+1);if(dx>50)go(n-1)});
+</script></body></html>

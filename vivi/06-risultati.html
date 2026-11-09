@@ -1,0 +1,26 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIVI — Risultati</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vivi.css"><script src="vivi.js"></script>
+<style>
+.rc{display:flex;overflow:hidden;border-radius:20px}
+.rc .th{position:relative;width:100px;height:100px;margin:10px 0 10px 10px;border-radius:16px;flex-shrink:0;display:grid;place-items:center}
+.rc .th .like{position:absolute;top:7px;right:7px;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
+.rc .th .pl{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff}
+.rc .inf{padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;justify-content:center}
+.rc h3{font:600 15px 'Sora'}
+.rc .meta{font-size:13px}
+.price{font:700 13px 'DM Sans';color:var(--fg)}
+</style></head><body>
+<div class="phone"><div class="screen">
+<div class="topbar"><button class="iconbtn" data-go="05-ricerca.html" aria-label="Indietro"><i data-i="back" data-s="24"></i></button><h1 style="font-size:22px;flex:none">Musica</h1><span class="pill s lav" style="font-size:12px;font-weight:600;padding:5px 11px">23 eventi</span></div>
+<div class="hscroll" data-single id="so"><span class="chip pill on"><i data-i="pin" data-s="14"></i>Più vicini</span><span class="chip pill"><i data-i="calendar" data-s="14"></i>Prossimi</span><span class="chip pill"><i data-i="flame" data-s="14"></i>Popolari</span><span class="chip pill"><i data-i="tag" data-s="14"></i>Gratis</span></div>
+<div class="section col" style="gap:14px;margin-top:16px" id="list">
+ <a class="card rc rv" href="#" data-go="08-dettaglio.html"><div class="th" style="background:var(--viola)"><button class="like" aria-label="Salva"><i data-i="heart" data-s="18"></i></button><span class="pl"><i data-i="tri" data-s="12"></i></span></div><div class="inf"><h3>Jazz al Magazzino</h3><span class="meta"><i data-i="pin" data-s="12"></i>Magazzino Sul Po</span><span class="meta"><i data-i="calendar" data-s="12"></i>Ven 21:30</span><div class="row gap8"><span class="meta"><i data-i="users" data-s="12"></i>45</span><span class="price">Gratis</span><span class="pill s lav">8 video</span></div></div></a>
+ <a class="card rc rv" href="#"><div class="th" style="background:var(--rosa)"><button class="like" aria-label="Salva"><i data-i="heart" data-s="18"></i></button></div><div class="inf"><h3>DJ Set Rooftop</h3><span class="meta"><i data-i="pin" data-s="12"></i>Edit Torino</span><span class="meta"><i data-i="calendar" data-s="12"></i>Sab 23:00</span><div class="row gap8"><span class="meta"><i data-i="users" data-s="12"></i>120</span><span class="price">15 euro</span></div></div></a>
+ <a class="card rc rv" href="#"><div class="th" style="background:var(--lilla)"><button class="like" aria-label="Salva"><i data-i="heart" data-s="18"></i></button></div><div class="inf"><h3>Concerto acustico</h3><span class="meta"><i data-i="pin" data-s="12"></i>sPAZIO211</span><span class="meta"><i data-i="calendar" data-s="12"></i>Dom 19:00</span><div class="row gap8"><span class="meta"><i data-i="users" data-s="12"></i>30</span><span class="price">8 euro</span></div></div></a>
+ <a class="card rc rv" href="#"><div class="th" style="background:var(--lime)"><button class="like" aria-label="Salva" style="color:var(--ink)"><i data-i="heart" data-s="18"></i></button></div><div class="inf"><h3>Karaoke Night</h3><span class="meta"><i data-i="pin" data-s="12"></i>Bar Madera</span><span class="meta"><i data-i="calendar" data-s="12"></i>Gio 21:00</span><div class="row gap8"><span class="meta"><i data-i="users" data-s="12"></i>25</span><span class="price">Gratis</span></div></div></a>
+ <a class="card rc rv" href="#"><div class="th" style="background:var(--rosa)"><button class="like" aria-label="Salva"><i data-i="heart" data-s="18"></i></button></div><div class="inf"><h3>Orchestra Sinfonica</h3><span class="meta"><i data-i="pin" data-s="12"></i>Auditorium RAI</span><span class="meta"><i data-i="calendar" data-s="12"></i>Sab 20:30</span><div class="row gap8"><span class="meta"><i data-i="users" data-s="12"></i>200</span><span class="price">20 euro</span></div></div></a>
+</div>
+<button class="btn fab" style="box-shadow:0 6px 24px rgba(104,69,245,.4)" data-go="07-mappa.html"><i data-i="pin" data-s="18"></i>Vedi sulla mappa</button>
+</div></div>
+<script>tabbar('scopri');</script></body></html>
