@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F1FF">
+<title>Vivi</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url("InstrumentSerif-Regular.ttf") format("truetype");font-display:swap}
+:root{
+  --bg:#F6F1FF; --card:#FFFFFF; --ink:#2B1E45; --mute:#6E6290; --line:#E4DAF7;
+  --lilac:#B9A2F0; --lilac-d:#8A6FDB; --lilac-l:#E9E0FF; --acorn:#D98A3D; --acorn-d:#A8601F;
+  --r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#1B1430; --card:#2A2045; --ink:#F3EEFF; --mute:#B3A5D8; --line:#3C3160; --lilac-l:#3A2E63}
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.app{max-width:440px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) 20px 120px}
+header{display:flex;justify-content:space-between;align-items:baseline}
+.date{color:var(--mute);font-size:14px;text-transform:capitalize}
+.logo{font-family:"Instrument Serif",serif;font-size:28px;color:var(--lilac-d)}
+.hero{position:relative;margin-top:8px;text-align:center}
+.squirrel{width:min(78%,300px);height:auto;display:block;margin:0 auto;overflow:visible}
+.squirrel .tail{transform-origin:70% 90%;animation:sway 5s ease-in-out infinite}
+.squirrel .body{transform-origin:50% 90%}
+.hop .body{animation:hop .5s cubic-bezier(.3,1.6,.5,1)}
+.blink{transform-origin:center;animation:blink 5s infinite}
+@keyframes sway{50%{transform:rotate(-5deg)}}
+@keyframes hop{30%{transform:translateY(-14px) scale(.98,1.04)}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+h1{font:400 clamp(34px,10vw,44px)/1.05 "Instrument Serif",serif;margin-top:4px}
+h1 em{color:var(--lilac-d)}
+.sub{color:var(--mute);margin-top:6px}
+.bar{height:10px;border-radius:99px;background:var(--lilac-l);margin:18px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--lilac-d);border-radius:99px;transition:width .5s cubic-bezier(.3,1.2,.5,1)}
+.stats{display:flex;justify-content:space-between;font-size:14px;color:var(--mute)}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+li{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px 12px 12px}
+li .t{flex:1;font-size:17px}
+li small{display:block;color:var(--mute);font-size:13px}
+li.done .t b{font-weight:400;color:var(--mute);text-decoration:line-through;text-decoration-color:var(--lilac)}
+.chk{width:48px;height:48px;border-radius:50%;border:2px solid var(--lilac);background:transparent;display:grid;place-items:center;cursor:pointer;flex:none;transition:.2s}
+.chk svg{width:26px;opacity:.35;transition:.2s}
+.chk:active{transform:scale(.92)}
+li.done .chk{background:var(--lilac-d);border-color:var(--lilac-d)}
+li.done .chk svg{opacity:1}
+.del{background:none;border:0;color:var(--mute);font-size:22px;width:36px;height:36px;border-radius:50%;cursor:pointer}
+.del:hover{background:var(--lilac-l)}
+.empty{text-align:center;color:var(--mute);padding:20px}
+form{position:fixed;left:0;right:0;bottom:0;padding:12px 20px max(16px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 35%)}
+form div{max-width:440px;margin:0 auto;display:flex;gap:10px}
+input{flex:1;min-width:0;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:14px 18px}
+input:focus{outline:3px solid var(--lilac);outline-offset:1px;border-color:var(--lilac-d)}
+.add{font:inherit;font-weight:600;background:var(--lilac-d);color:#fff;border:0;border-radius:99px;padding:0 22px;cursor:pointer}
+.add:active{transform:scale(.96)}
+button:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+.fly{position:fixed;width:26px;z-index:9;pointer-events:none;transition:transform .7s cubic-bezier(.5,-.3,.6,1),opacity .7s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header><span class="logo">Vivi</span><span class="date" id="date"></span></header>
+
+  <section class="hero" id="hero">
+    <svg class="squirrel" id="sq" viewBox="0 0 320 300" role="img" aria-label="Vivi, lo scoiattolo viola lilla">
+      <ellipse cx="170" cy="284" rx="86" ry="9" fill="#8A6FDB" opacity=".15"/>
+      <!-- coda -->
+      <g class="tail">
+        <path d="M118 250C40 262 8 200 36 142C58 96 40 56 78 34C122 10 176 40 170 92C166 130 134 150 132 190C130 214 150 232 118 250Z" fill="#B9A2F0"/>
+        <path d="M112 232C62 238 40 200 58 156C72 122 62 92 86 72C110 54 142 70 140 98C138 128 112 146 112 186C112 204 126 214 112 232Z" fill="#CDBBFA"/>
+        <path d="M70 120q22 4 34-10M62 168q26 2 40-14" stroke="#8A6FDB" stroke-width="5" stroke-linecap="round" fill="none" opacity=".45"/>
+      </g>
+      <g class="body">
+        <!-- corpo -->
+        <ellipse cx="190" cy="214" rx="62" ry="64" fill="#B9A2F0"/>
+        <ellipse cx="204" cy="226" rx="38" ry="46" fill="#EFE8FF"/>
+        <!-- piedi -->
+        <ellipse cx="166" cy="276" rx="22" ry="10" fill="#8A6FDB"/>
+        <ellipse cx="220" cy="276" rx="22" ry="10" fill="#8A6FDB"/>
+        <!-- testa -->
+        <path d="M148 104L142 56L176 80Z" fill="#8A6FDB"/>
+        <path d="M232 104L242 54L206 80Z" fill="#8A6FDB"/>
+        <path d="M153 98L150 70L168 82Z" fill="#EFE8FF"/>
+        <path d="M227 98L233 68L214 82Z" fill="#EFE8FF"/>
+        <ellipse cx="190" cy="126" rx="58" ry="52" fill="#B9A2F0"/>
+        <ellipse cx="190" cy="146" rx="34" ry="24" fill="#EFE8FF"/>
+        <!-- guance -->
+        <circle cx="146" cy="142" r="9" fill="#F4A6C8" opacity=".7"/>
+        <circle cx="234" cy="142" r="9" fill="#F4A6C8" opacity=".7"/>
+        <!-- occhi -->
+        <g class="blink"><ellipse cx="166" cy="122" rx="7" ry="9" fill="#2B1E45"/><ellipse cx="214" cy="122" rx="7" ry="9" fill="#2B1E45"/></g>
+        <circle cx="168.5" cy="118" r="2.6" fill="#fff"/><circle cx="216.5" cy="118" r="2.6" fill="#fff"/>
+        <!-- naso e bocca -->
+        <ellipse cx="190" cy="141" rx="6" ry="4.5" fill="#2B1E45"/>
+        <path d="M190 146v5M181 154q9 7 18 0" stroke="#2B1E45" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <rect x="186" y="155" width="8" height="8" rx="2" fill="#fff" stroke="#2B1E45" stroke-width="2" opacity=".0"/>
+        <!-- ghianda -->
+        <g transform="translate(176 188)">
+          <ellipse cx="14" cy="22" rx="17" ry="20" fill="#D98A3D"/>
+          <path d="M-4 14q18-24 36 0z" fill="#A8601F"/>
+          <path d="M14 -2v-8" stroke="#A8601F" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <!-- zampette -->
+        <ellipse cx="172" cy="206" rx="11" ry="9" fill="#8A6FDB"/>
+        <ellipse cx="220" cy="206" rx="11" ry="9" fill="#8A6FDB"/>
+      </g>
+    </svg>
+    <h1 id="title"></h1>
+    <p class="sub" id="sub"></p>
+  </section>
+
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <div class="stats"><span>Ghiande di oggi <b id="today">0</b></span><span>Serie <b id="streak">0</b> 🌰</span></div>
+
+  <ul id="list"></ul>
+</main>
+
+<form id="f" autocomplete="off">
+  <div>
+    <input id="in" maxlength="40" placeholder="Nuovo rituale…" aria-label="Nuovo rituale">
+    <button class="add" type="submit">Aggiungi</button>
+  </div>
+</form>
+
+<script>
+const $=s=>document.querySelector(s);
+const K="vivi.v1";
+const day=(d=new Date())=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const load=()=>{try{return JSON.parse(localStorage.getItem(K))}catch{return null}};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch{}};
+let S=load()||{rituals:[
+  {id:1,name:"Bere un bicchiere d'acqua",log:[]},
+  {id:2,name:"Dieci minuti all'aria aperta",log:[]},
+  {id:3,name:"Scrivere una riga nel diario",log:[]}
+],next:4};
+const today=day();
+const isDone=r=>r.log.includes(today);
+function streak(){
+  let n=0,d=new Date();
+  const any=x=>S.rituals.some(r=>r.log.includes(day(x)));
+  if(!any(d))d.setDate(d.getDate()-1);
+  while(any(d)){n++;d.setDate(d.getDate()-1)}
+  return n;
+}
+function msg(done,tot){
+  if(!tot)return["Ciao, io sono <em>Vivi</em>","Aggiungi il tuo primo rituale: raccolgo le ghiande."];
+  if(!done)return["Buona giornata, <em>iniziamo</em>?","Ho le zampe vuote: dammi una ghianda."];
+  if(done<tot)return[`<em>${done}</em> su ${tot}, che bel ritmo`,"Ne manca ancora qualcuna per la scorta."];
+  return["Scorta <em>completa</em>!","Oggi hai fatto tutto. Riposati, te lo sei guadagnato."];
+}
+function render(){
+  const t=S.rituals.length,d=S.rituals.filter(isDone).length;
+  $("#date").textContent=new Date().toLocaleDateString("it-IT",{weekday:"long",day:"numeric",month:"long"});
+  const [a,b]=msg(d,t);$("#title").innerHTML=a;$("#sub").textContent=b;
+  $("#today").textContent=`${d}/${t}`;$("#streak").textContent=streak();
+  $("#bar").style.width=t?d/t*100+"%":"0";
+  const ul=$("#list");ul.innerHTML="";
+  if(!t){ul.innerHTML='<li class="empty" style="display:block">Ancora nessun rituale.</li>'}
+  S.rituals.forEach(r=>{
+    const li=document.createElement("li");li.className=isDone(r)?"done":"";
+    const n=r.log.length;
+    li.innerHTML=`<button class="chk" aria-label="Segna come fatto: ${r.name.replace(/"/g,"&quot;")}" aria-pressed="${isDone(r)}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+    <span class="t"></span><button class="del" aria-label="Elimina">×</button>`;
+    li.querySelector(".t").innerHTML=`<b>${esc(r.name)}</b><small>${n} ${n==1?"volta":"volte"} in totale</small>`;
+    li.querySelector(".chk").onclick=e=>toggle(r,e.currentTarget);
+    li.querySelector(".del").onclick=()=>{S.rituals=S.rituals.filter(x=>x!==r);save();render()};
+    ul.append(li);
+  });
+}
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function toggle(r,btn){
+  const was=isDone(r);
+  r.log=was?r.log.filter(x=>x!==today):[...r.log,today];
+  save();
+  if(!was)fly(btn);
+  render();
+}
+function fly(btn){
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches){hop();return}
+  const a=btn.getBoundingClientRect(),b=$("#sq").getBoundingClientRect();
+  const el=document.createElement("div");el.className="fly";
+  el.innerHTML='<svg viewBox="0 0 34 40"><ellipse cx="17" cy="26" rx="15" ry="14" fill="#D98A3D"/><path d="M1 20q16-20 32 0z" fill="#A8601F"/></svg>';
+  el.style.left=a.left+a.width/2-13+"px";el.style.top=a.top+"px";
+  document.body.append(el);
+  requestAnimationFrame(()=>{
+    el.style.transform=`translate(${b.left+b.width*.55-a.left-a.width/2}px,${b.top+b.height*.6-a.top}px) scale(.7)`;
+    el.style.opacity=".2";
+  });
+  setTimeout(()=>{el.remove();hop()},650);
+}
+function hop(){const h=$("#hero");h.classList.remove("hop");void h.offsetWidth;h.classList.add("hop")}
+$("#f").onsubmit=e=>{
+  e.preventDefault();const v=$("#in").value.trim();if(!v)return;
+  S.rituals.push({id:S.next++,name:v,log:[]});$("#in").value="";save();render();
+};
+render();
+</script>
+</body>
+</html>
