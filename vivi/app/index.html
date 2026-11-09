@@ -1,0 +1,15 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>VIVI — La tua città prende vita</title>
+<meta name="theme-color" content="#6845F5"><link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../vivi.css"><link rel="stylesheet" href="app.css">
+</head><body>
+<div class="phone" id="app">
+  <div id="stage"></div>
+  <nav class="tabbar hide" id="tabbar" aria-label="Navigazione principale"><span class="glow"></span>
+    <button class="tab" data-tab="home" data-ic="home">Scopri</button><button class="tab" data-tab="map" data-ic="map">Mappa</button><button class="tab" data-tab="plans" data-ic="clipboard">Piani</button><button class="tab" data-tab="groups" data-ic="users">Gruppi</button><button class="tab" data-tab="profile" data-ic="profile">Profilo</button>
+  </nav>
+  <div id="layer"></div>
+</div>
+<script src="../vivi.js"></script><script src="data.js"></script><script src="core.js"></script><script src="views1.js"></script><script src="views2.js"></script>
+<script>A.boot();if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{})</script>
+</body></html>

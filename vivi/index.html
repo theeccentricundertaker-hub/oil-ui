@@ -9,12 +9,12 @@ header{max-width:1200px;margin:0 auto 32px;display:flex;align-items:center;gap:2
 h1{font:800 40px 'Sora',sans-serif;color:var(--viola)}header p{color:var(--muted);flex:1;min-width:220px}
 button{font:600 14px 'DM Sans';background:var(--viola);color:#fff;border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
 .grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:28px}
-a{color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:transform .2s}a:hover{transform:translateY(-4px)}
+a{color:inherit;text-decoration:none}.grid a{display:flex;flex-direction:column;gap:10px;transition:transform .2s}.grid a:hover{transform:translateY(-4px)}
 .fr{position:relative;width:216px;height:468px;border-radius:26px;overflow:hidden;box-shadow:0 0 0 5px #251C35,0 16px 36px rgba(37,28,53,.25);margin:0 auto;background:var(--card)}
 iframe{width:393px;height:852px;border:0;transform:scale(.55);transform-origin:0 0;pointer-events:none}
 .n{font:700 13px 'Sora';color:var(--muted)}.t{font:600 16px 'Sora'}
 </style></head><body>
-<header><h1>VIVI</h1><p>18 schermate dell'app. Clicca una schermata per aprirla interattiva (dark mode automatica, oppure usa il pulsante).</p><button id="th">Dark mode</button></header>
+<header><h1>VIVI</h1><p>18 schermate dell'app. Clicca una schermata per aprirla interattiva (dark mode automatica, oppure usa il pulsante).</p><a href="app/index.html" style="display:inline-block;background:var(--lime);color:#251C35;font:700 14px 'DM Sans';border-radius:999px;padding:10px 20px">Apri l'app</a><button id="th">Dark mode</button></header>
 <div class="grid" id="g"></div>
 <script>
 const S=[['01-splash','Splash Screen'],['02-onboarding','Onboarding'],['03-login','Login e Registrazione'],['04-home','Home / Scopri'],['05-ricerca','Ricerca e Filtri'],['06-risultati','Risultati'],['07-mappa','Mappa interattiva'],['08-dettaglio','Dettaglio attività'],['09-conferma-salvataggio','Conferma salvataggio'],['10-crea-piano','Crea un piano'],['11-timeline','Programma e timeline'],['12-invito','Invito partecipanti'],['13-coordinamento','Coordinamento e voti'],['14-uscita-condivisa','Uscita condivisa'],['15-piani','Piani'],['16-profilo','Profilo'],['17-badge','Badge e progressi'],['18-stati','Stati speciali']];

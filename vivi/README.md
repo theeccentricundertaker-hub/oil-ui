@@ -29,3 +29,18 @@ Dark mode automatica (prefers-color-scheme) oppure forzata con `?theme=dark` / `
 | 16 | 16-profilo | Profilo |
 | 17 | 17-badge | Badge e progressi |
 | 18 | 18-stati | Vuoto / Caricamento / Errore / Conferma |
+
+## App funzionante (`app/`)
+
+`app/index.html` è l'applicazione vera: una single-page app (HTML/CSS/JS, nessuna build) che usa lo stesso design system.
+
+- **Router** a hash con transizioni slide/fade e tab bar fluttuante persistente
+- **Stato** salvato in `localStorage`: utente, XP, livello, badge, piani, salvati, notifiche, streak
+- **Dati reali**: 16 attività filtrabili per testo, categoria, quando, distanza, prezzo, tipo; ordinamento e ricerca live
+- **Flussi completi**: splash → onboarding → login/registrazione → home → ricerca/filtri → risultati → mappa → dettaglio → salva / partecipa / aggiungi a un piano
+- **Piani**: wizard a 4 passi che genera il programma, timeline con tappe da completare (XP, level-up, badge, confetti), inviti con risposte simulate degli amici, coordinamento con voti, note e conferma finale
+- **Profilo**: statistiche reali, interessi, tema automatico/chiaro/scuro, modifica profilo, reset
+- **Micro-animazioni**: ripple sui pulsanti, esplosione di particelle su like/salva, contatori XP, toast con rimbalzo, bottom sheet trascinabili, skeleton shimmer, pin della mappa che cadono, tab bar con indicatore scorrevole, haptic (vibrazione) dove supportato; `prefers-reduced-motion` rispettato
+- PWA di base (`manifest.webmanifest`, `sw.js` quando servita via http/https)
+
+Per provarla in locale: `python3 -m http.server` dentro `vivi/` e apri `http://localhost:8000/app/`.
