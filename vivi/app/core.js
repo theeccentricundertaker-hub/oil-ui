@@ -74,9 +74,10 @@ A.applyTheme=()=>{const r=document.documentElement;if(S.theme==='auto')delete r.
 /* ---- router ---- */
 const routes={},TABS=['home','map','plans','groups','profile'];A.route=(n,f)=>routes[n]=f;
 let stack=[],cur=null,view=null,busy=false;
-A.go=p=>{if(location.hash==='#'+p)render();else location.hash=p};A.replace=p=>{location.replace('#'+p)};
-A.back=()=>{if(stack.length>1)history.back();else A.go('/home')};
-function render(){const raw=location.hash.slice(1)||'/splash';const [path,qs]=raw.split('?');const parts=path.split('/').filter(Boolean),name=parts[0]||'splash';
+A._r=null;
+A.go=p=>{A._r=p;if(location.hash==='#'+p)render(true);else{try{location.hash=p}catch(e){}render()}};A.replace=p=>{A._r=p;try{location.replace('#'+p)}catch(e){}render()};
+A.back=()=>{if(stack.length>1)A.go(stack[stack.length-2]);else A.go('/home')};
+function render(force){const raw=(A._r!=null?A._r:location.hash.slice(1))||'/splash';if(!force&&cur===raw&&view)return;const [path,qs]=raw.split('?');const parts=path.split('/').filter(Boolean),name=parts[0]||'splash';
  const guard=!['splash','onboarding','auth'].includes(name);
  if(guard&&(!S.onboarded||!S.user))return A.replace(S.onboarded?'/auth':'/onboarding');
  const fn=routes[name];if(!fn)return A.replace('/home');
@@ -95,7 +96,7 @@ function render(){const raw=location.hash.slice(1)||'/splash';const [path,qs]=ra
  const tb=$('#tabbar');const t=out.tab||(isTab?name:null);tb.classList.toggle('hide',!t);
  if(t){$$('.tab',tb).forEach((b,i)=>b.classList.toggle('on',b.dataset.tab===t));moveGlow()}
  const bd=$('.bell-dot',el);if(bd)bd.classList.toggle('hide',!S.notifs.some(n=>!n.read));}
-A.render=render;
+A.render=()=>render(true);
 function moveGlow(){const tb=$('#tabbar'),g=$('.glow',tb),on=$('.tab.on',tb);if(!on)return;g.style.transform=`translateX(${on.offsetLeft+on.offsetWidth/2-22-6}px)`}
 A.moveGlow=moveGlow;
 /* ---- azioni globali ---- */
@@ -127,7 +128,7 @@ A.boot=()=>{A.applyTheme();const td=new Date().toDateString();if(S.lastOpen!==td
  ap.addEventListener('pointerdown',e=>{const b=e.target.closest('.btn,.chip');if(!b||b.classList.contains('off'))return;const r=b.getBoundingClientRect(),s=document.createElement('span');s.className='ripple';const d=Math.max(r.width,r.height)*1.6;s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;b.appendChild(s);setTimeout(()=>s.remove(),600)});
  /* tab bar */
  $$('#tabbar .tab').forEach(b=>{const ic=icon(b.dataset.ic,24);b.insertAdjacentHTML('afterbegin',`<span class="ic">${ic}</span>`);b.addEventListener('click',()=>{A.haptic(6);const to='/'+b.dataset.tab;if(location.hash==='#'+to){view&&view.scrollTo({top:0,behavior:'smooth'})}else A.go(to)})});
- addEventListener('hashchange',render);addEventListener('online',()=>A.toast('Sei di nuovo online','check'));addEventListener('offline',()=>A.toast('Sei offline','warning'));
- if(!location.hash)location.hash='/splash';else render()};
+ addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h&&h!==A._r){A._r=h;render()}});addEventListener('online',()=>A.toast('Sei di nuovo online','check'));addEventListener('offline',()=>A.toast('Sei offline','warning'));
+ A._r=location.hash.slice(1)||'/splash';render()};
 window.A=A;
 })();
