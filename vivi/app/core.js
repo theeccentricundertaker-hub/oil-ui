@@ -3,7 +3,7 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const DAYS=['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],DAYSL=['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'],MON=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 const KEY='vivi-app-v1';
-const def=()=>({onboarded:false,user:null,xp:0,saved:[],liked:[],joined:[],plans:[],badges:{},recent:['Concerti jazz','Yoga all\'aperto','Aperitivo'],theme:'auto',streak:1,lastOpen:null,mapSeen:[],invited:[],log:[],notifs:[],seq:1,interests:['musica','food','arte'],filters:{when:null,dist:10,price:null,type:[]},notify:true});
+const def=()=>({onboarded:false,user:null,xp:0,saved:[],liked:[],joined:[],plans:[],badges:{},recent:['Concerti jazz','Yoga all\'aperto','Aperitivo'],theme:'auto',streak:1,lastOpen:null,mapSeen:[],invited:[],log:[],notifs:[],seq:1,interests:['musica','food','arte'],filters:{when:null,dist:10,price:null,type:[]},notify:true,party:{}});
 let S;try{S=Object.assign(def(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=def()}
 const A={S,$,$$,DAYS,DAYSL,MON,timers:[]};
 A.save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
@@ -18,7 +18,7 @@ A.dateOf=o=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+o);ret
 A.whenLabel=e=>(e.d===0?'Oggi':e.d===1?'Domani':DAYS[A.dateOf(e.d).getDay()])+' '+e.t0.replace(/^0/,'');
 A.ev=id=>EVENTS.find(e=>e.id===id);
 A.isWeekend=d=>{const g=A.dateOf(d).getDay();return g===0||g===6};
-A.priceLabel=e=>e.price?e.price+' euro':'Gratis';
+A.priceLabel=e=>e.price?e.price+' €':'Gratis';
 A.xpOf=e=>CATXP[e.cat]||20;
 A.fmtDist=k=>k<1?Math.round(k*1000)+'m':k.toFixed(1).replace('.',',')+'km';
 A.query=(o={})=>{const f=o.filters||{},q=(o.q||'').toLowerCase().trim();

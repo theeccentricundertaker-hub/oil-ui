@@ -40,3 +40,6 @@ window.BADGES=[
 {id:'finisher',n:'Finisher',ic:'trophy',col:'viola',goal:1,d:'Completa un intero piano',get:s=>s.plans.filter(p=>p.status==='done').length},
 {id:'legend',n:'Leggenda Urbana',ic:'diamond',col:'lilla',goal:15,d:'Completa 15 tappe',get:s=>s.log.length}
 ];
+
+/* valutazioni (deterministiche) */
+EVENTS.forEach(e=>{let h=0;for(const c of e.id)h=(h*31+c.charCodeAt(0))>>>0;e.rating=(4.3+(h%7)/10).toFixed(1).replace('.',',');e.reviews=20+(h*7)%280});
