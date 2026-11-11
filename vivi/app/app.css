@@ -251,3 +251,37 @@ body{line-height:1.45}
 .dock.buy .qty{display:flex;align-items:center;gap:8px}.dock.buy .qty .chip{min-width:36px;justify-content:center}
 .dock.buy .act{display:flex;gap:10px}.dock.buy .sq{width:48px;height:48px;border-radius:50%;flex-shrink:0;background:var(--soft);color:var(--soft-fg);display:grid;place-items:center;transition:transform .15s}.dock.buy .sq:active{transform:scale(.92)}.dock.buy .sq.on{color:#FF5C8A}
 .dock.buy .btn.main{flex:1;height:48px}
+
+/* ===== Onboarding come pitch: demo animate, quiz, prova sociale, validazione live, primi passi ===== */
+.demo{position:relative;width:260px;height:250px;z-index:1}
+.mc{position:absolute;left:0;right:0;display:flex;align-items:center;gap:10px;background:var(--card-bg);border-radius:16px;padding:10px;box-shadow:0 6px 18px var(--card-shadow);opacity:0;animation:mcIn 6s ease-in-out infinite;animation-delay:var(--dl,0s)}
+.mc i{width:44px;height:44px;border-radius:12px;flex-shrink:0}.mc b{display:block;font:600 13px 'Sora'}.mc small{color:var(--fg2);font-size:11px}
+.mc.c1{top:10px;--dl:0s}.mc.c2{top:84px;--dl:.5s}.mc.c3{top:158px;--dl:1s}
+@keyframes mcIn{0%{opacity:0;transform:translateY(24px) scale(.96)}12%,80%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateY(-10px)}}
+.dchip{position:absolute;right:-6px;top:-8px;animation:chipPop 6s ease-in-out infinite}
+@keyframes chipPop{0%,10%{transform:scale(0)}18%{transform:scale(1.15)}24%,85%{transform:scale(1)}95%,100%{transform:scale(0)}}
+.d2 .ts{position:absolute;left:0;right:0;display:flex;align-items:center;gap:10px;background:var(--card-bg);border-radius:14px;padding:12px;box-shadow:0 6px 18px var(--card-shadow);opacity:0;animation:mcIn 7s ease-in-out infinite}
+.d2 .ts b{font:600 12px 'Sora';color:var(--soft-fg);width:38px}.d2 .ts span{flex:1;font:600 13px 'Sora'}.d2 .ts em{width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;transform:scale(0);animation:chk 7s ease-in-out infinite}
+.d2 .s1{top:8px}.d2 .s2{top:74px;animation-delay:.6s}.d2 .s3{top:140px;animation-delay:1.2s}.d2 .s1 em{animation-delay:.9s}.d2 .s2 em{animation-delay:1.5s}.d2 .s3 em{animation-delay:2.1s}
+@keyframes chk{0%,18%{transform:scale(0)}26%{transform:scale(1.2)}32%,85%{transform:scale(1)}95%,100%{transform:scale(0)}}
+.dtoast{position:absolute;left:10px;bottom:2px;display:flex;align-items:center;gap:8px;background:var(--prugna);color:#fff;border-radius:999px;padding:6px 14px 6px 6px;font:500 12px 'Sora';animation:chipPop 7s ease-in-out infinite;animation-delay:3s;transform:scale(0)}
+.d3{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.d3 .xpb{width:200px;height:10px;border-radius:5px;background:rgba(37,28,53,.15);overflow:hidden}.d3 .xpb i{display:block;height:100%;border-radius:5px;background:var(--viola);animation:xpf 4s ease-in-out infinite}
+@keyframes xpf{0%{width:8%}60%,85%{width:92%}100%{width:8%}}
+.d3 .xpf{position:absolute;top:30px;right:10px;background:var(--lime);color:var(--ink);border-radius:999px;padding:6px 12px;font:700 14px 'Sora';animation:xpp 4s ease-in-out infinite;opacity:0}
+@keyframes xpp{0%,40%{opacity:0;transform:translateY(14px)}55%,85%{opacity:1;transform:none}100%{opacity:0}}
+.d3 .bd3{position:absolute;bottom:6px;left:20px;width:50px;height:50px;border-radius:50%;background:var(--viola);color:#fff;display:grid;place-items:center;animation:chipPop 4s ease-in-out infinite;animation-delay:1.8s;transform:scale(0)}
+.calcl{display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:20px auto 0;width:230px;font-size:14px}
+.calcl div{display:flex;align-items:center;gap:8px;opacity:.35;transition:opacity .3s}.calcl div svg{color:var(--g500)}.calcl div.on{opacity:1}.calcl div.on svg{color:#6a8f10}
+.proof{display:flex;align-items:center;gap:12px;background:var(--soft);border-radius:16px;padding:10px 14px}.proof .stack>*{border-color:var(--soft)}
+.rules{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--fg2)}.rules li{display:flex;align-items:center;gap:8px;transition:color .2s}.rules li svg{opacity:.35;transition:all .25s}
+.rules li.ok{color:var(--fg)}.rules li.ok svg{opacity:1;color:#6a8f10;transform:scale(1.2)}
+.ckc{padding:0;overflow:hidden}.ckh{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px}
+.ckr{position:relative;width:40px;height:40px;display:grid;place-items:center}.ckr svg{position:absolute;inset:0}.ckr b{font:700 11px 'Sora'}
+.ckc2{transition:transform .25s;color:var(--fg2)}.ckc2.open{transform:rotate(180deg)}
+.ckl{display:flex;flex-direction:column;gap:2px;padding:0 16px 14px}.cki{display:flex;align-items:center;gap:10px;padding:9px 0;font-size:14px;cursor:pointer}.cki.ok{color:var(--fg2);text-decoration:line-through;cursor:default}
+.ckd{width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--g300);display:grid;place-items:center;color:transparent}.cki.ok .ckd{background:var(--lime);box-shadow:none;color:var(--ink)}
+.xp{position:relative}.tipbtn{color:var(--soft-fg);flex-shrink:0}
+.tipb{position:absolute;left:12px;right:12px;top:calc(100% + 8px);background:var(--prugna);color:#fff;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5;z-index:5;animation:pop .3s cubic-bezier(.34,1.56,.64,1) both}
+.sig{animation:sigd 1.6s ease .4s forwards}@keyframes sigd{to{stroke-dashoffset:0}}
+.stp .ct.on b{color:var(--fg)}

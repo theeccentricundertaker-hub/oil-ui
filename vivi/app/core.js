@@ -78,7 +78,7 @@ A._r=null;
 A.go=p=>{A._r=p;if(location.hash==='#'+p)render(true);else{try{location.hash=p}catch(e){}render()}};A.replace=p=>{A._r=p;try{location.replace('#'+p)}catch(e){}render()};
 A.back=()=>{if(stack.length>1)A.go(stack[stack.length-2]);else A.go('/home')};
 function render(force){const raw=(A._r!=null?A._r:location.hash.slice(1))||'/splash';if(!force&&cur===raw&&view)return;const [path,qs]=raw.split('?');const parts=path.split('/').filter(Boolean),name=parts[0]||'splash';
- const guard=!['splash','onboarding','auth'].includes(name);
+ const guard=!['splash','onboarding','quiz','auth'].includes(name);
  if(guard&&(!S.onboarded||!S.user))return A.replace(S.onboarded?'/auth':'/onboarding');
  const fn=routes[name];if(!fn)return A.replace('/home');
  if(busy&&cur===raw)return;
